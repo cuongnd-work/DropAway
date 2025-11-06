@@ -91,8 +91,6 @@ class LevelSpawner extends LifecycleComponent {
                 const worldPos = new Vec3(x - halfWidth, 0, y - halfHeight);
 
                 if (obstacleSet.has(key)) {
-                    const obstacle = spawnEntity<Obstacle>(this.obstaclePrefab, worldPos, gridPos, parentNode);
-                    if (obstacle) this.addEntityToMap(key, obstacle);
                     continue;
                 }
 
@@ -101,11 +99,31 @@ class LevelSpawner extends LifecycleComponent {
 
                 this.floors.push(floor);
                 this.addEntityToMap(key, floor);
+            }
+        }
 
-                const isEdge = x === 0 || y === 0 || x === width - 1 || y === height - 1;
-                if (isEdge && this.obstaclePrefab) {
-                    const obstacle = spawnEntity<Obstacle>(this.obstaclePrefab, worldPos, gridPos, parentNode);
-                    if (obstacle) this.addEntityToMap(key, obstacle);
+        const floorKeys = new Set(this.floors.map(f => `${f.position.x},${f.position.y}`));
+
+        for (const floor of this.floors) {
+            const x = floor.position.x;
+            const y = floor.position.y;
+
+            const neighbors = [
+                [x - 1, y],
+                [x + 1, y],
+                [x, y - 1],
+                [x, y + 1]
+            ];
+
+            const isEdge = neighbors.some(([nx, ny]) => !floorKeys.has(`${nx},${ny}`));
+            const key = `${x},${y}`;
+
+            if (isEdge && this.obstaclePrefab) {
+                const worldPos = new Vec3(x - halfWidth, 0, y - halfHeight);
+
+                const obstacle = spawnEntity<Obstacle>(this.obstaclePrefab, worldPos, new Vec2(x, y), parentNode);
+                if (obstacle) {
+                    this.addEntityToMap(key, obstacle);
                 }
             }
         }
