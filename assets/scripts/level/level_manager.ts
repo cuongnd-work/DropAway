@@ -13,7 +13,7 @@ export class LevelManager extends LifecycleComponent {
     levelJson: JsonAsset | null = null;
 
     private levelData: LevelData | null = null;
-
+    
     override onInitialize(): void {
         this.loadLevelFromAsset(this.levelJson);
     }

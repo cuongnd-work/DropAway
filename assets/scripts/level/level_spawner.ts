@@ -104,14 +104,38 @@ export class LevelSpawner extends LifecycleComponent {
             const key = `${x},${y}`;
 
             if (isEdge && this.obstaclePrefab) {
-                const worldPos = new Vec3(x - halfWidth, 0, y - halfHeight);
+                const localPos = new Vec3(x - halfWidth, 0, y - halfHeight);
 
-                const obstacle = spawnEntity<Obstacle>(this.obstaclePrefab, worldPos, new Vec2(x, y), parentNode);
+                const obstacle = spawnEntity<Obstacle>(
+                    this.obstaclePrefab,
+                    localPos,
+                    new Vec2(x, y),
+                    parentNode
+                );
+
                 if (obstacle) {
                     if (!entitiesMaps.has(key)) {
                         entitiesMaps.set(key, []);
                     }
                     entitiesMaps.get(key)!.push(obstacle);
+
+                    const neighborOffsets = [
+                        [0, 1],  
+                        [1, 0],   
+                        [0, -1],  
+                        [-1, 0]   
+                    ];
+
+                    const neighbors: IEntities[] = [];
+
+                    for (const [dx, dy] of neighborOffsets) {
+                        const neighborKey = `${x + dx},${y + dy}`;
+                        if (entitiesMaps.has(neighborKey)) {
+                            neighbors.push(...entitiesMaps.get(neighborKey)!);
+                        }
+                    }
+
+                    obstacle.setupInit(neighbors);
                 }
             }
         }

@@ -225,7 +225,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 7,
+    "_orthoHeight": 8.5,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -321,7 +321,7 @@
       "__id__": 7
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 9
@@ -447,7 +447,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelJson": {
-      "__uuid__": "67e71a5e-c9e3-4dfb-82dd-1808cc5fa1ca",
+      "__uuid__": "23ae6ab6-db20-4246-8b6f-3b18ba763aa2",
       "__expectedType__": "cc.JsonAsset"
     },
     "levelSpawner": {
