@@ -10,7 +10,7 @@ import {Obstacle} from "db://assets/scripts/entities/obstacle";
 const {ccclass, property} = _decorator;
 
 @ccclass('LevelSpawner')
-class LevelSpawner extends LifecycleComponent {
+export class LevelSpawner extends LifecycleComponent {
     @property({type: LevelManager})
     levelManager: LevelManager | null = null;
 
@@ -144,5 +144,3 @@ class LevelSpawner extends LifecycleComponent {
         return a.x === b.x && a.y === b.y;
     }
 }
-
-export default LevelSpawner
