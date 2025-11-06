@@ -28,6 +28,7 @@ export class LevelManager extends LifecycleComponent {
         }
 
         this.levelData = parsed;
+        console.log(parsed);
     }
 
     getCurrentLevel(): LevelData | null {

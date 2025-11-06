@@ -4,7 +4,7 @@ import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 
 const {ccclass} = _decorator;
 
-@ccclass('Floor')
-export class Floor extends LifecycleComponent implements IEntities {
+@ccclass('Obstacle')
+export class Obstacle extends LifecycleComponent implements IEntities {
     position: Vec2 = new Vec2();
 }

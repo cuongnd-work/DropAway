@@ -447,7 +447,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelJson": {
-      "__uuid__": "23ae6ab6-db20-4246-8b6f-3b18ba763aa2",
+      "__uuid__": "67e71a5e-c9e3-4dfb-82dd-1808cc5fa1ca",
       "__expectedType__": "cc.JsonAsset"
     },
     "_id": "38PyTxpmFK0bbnQ3yW3L1E"
@@ -469,7 +469,10 @@
       "__uuid__": "21b641e4-3b0b-4132-a248-340c0d53c856",
       "__expectedType__": "cc.Prefab"
     },
-    "obstaclePrefab": null,
+    "obstaclePrefab": {
+      "__uuid__": "fc2f2a47-40b0-4420-8964-8796ea37f226",
+      "__expectedType__": "cc.Prefab"
+    },
     "entitiesRoot": {
       "__id__": 10
     },
