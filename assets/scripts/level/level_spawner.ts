@@ -5,6 +5,7 @@ import {Floor} from "db://assets/scripts/entities/floor";
 import {object_pool_manager} from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {Obstacle} from "db://assets/scripts/entities/obstacle";
+import {Hole} from "db://assets/scripts/entities/hole";
 
 const {ccclass, property} = _decorator;
 
@@ -14,14 +15,13 @@ export class LevelSpawner extends LifecycleComponent {
     floorPrefab: Prefab | null = null;
 
     @property({type: Prefab})
+    holePrefab: Prefab | null = null;
+
+    @property({type: Prefab})
     obstaclePrefab: Prefab | null = null;
 
     @property({type: Node})
     entitiesRoot: Node | null = null;
-
-    override onInitialize(): void {
-        // Reserved for future setup if needed.
-    }
 
     private floors: Floor[] = [];
 
@@ -75,7 +75,7 @@ export class LevelSpawner extends LifecycleComponent {
                 if (obstacleSet.has(key)) {
                     continue;
                 }
-
+                
                 const floor = spawnEntity<Floor>(this.floorPrefab, worldPos, gridPos, parentNode);
                 if (!floor) continue;
 

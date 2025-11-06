@@ -1,0 +1,78 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "c63ef375-f9c5-48f4-b929-25038670b306",
+  "files": [],
+  "subMetas": {
+    "8d838": {
+      "importer": "gltf-mesh",
+      "uuid": "c63ef375-f9c5-48f4-b929-25038670b306@8d838",
+      "displayName": "",
+      "id": "8d838",
+      "name": "Scene.010.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1910
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d7a8f": {
+      "importer": "gltf-scene",
+      "uuid": "c63ef375-f9c5-48f4-b929-25038670b306@d7a8f",
+      "displayName": "",
+      "id": "d7a8f",
+      "name": "Stone_Block_LongRBrick.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "c63ef375-f9c5-48f4-b929-25038670b306@8d838"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "c63ef375-f9c5-48f4-b929-25038670b306@d7a8f"
+      ]
+    }
+  }
+}

@@ -469,6 +469,7 @@
       "__uuid__": "21b641e4-3b0b-4132-a248-340c0d53c856",
       "__expectedType__": "cc.Prefab"
     },
+    "holePrefab": null,
     "obstaclePrefab": {
       "__uuid__": "fc2f2a47-40b0-4420-8964-8796ea37f226",
       "__expectedType__": "cc.Prefab"

@@ -1,0 +1,78 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "896b4f9e-f870-4326-b730-c7884efeedad",
+  "files": [],
+  "subMetas": {
+    "44826": {
+      "importer": "gltf-mesh",
+      "uuid": "896b4f9e-f870-4326-b730-c7884efeedad@44826",
+      "displayName": "",
+      "id": "44826",
+      "name": "Scene.003.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1184
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dca85": {
+      "importer": "gltf-scene",
+      "uuid": "896b4f9e-f870-4326-b730-c7884efeedad@dca85",
+      "displayName": "",
+      "id": "dca85",
+      "name": "Stone_Block_Single.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "896b4f9e-f870-4326-b730-c7884efeedad@44826"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "896b4f9e-f870-4326-b730-c7884efeedad@dca85"
+      ]
+    }
+  }
+}
