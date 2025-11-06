@@ -1,6 +1,5 @@
 import {_decorator, Node, Prefab, Vec2, Vec3, warn, Component} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
-import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {LevelData} from "db://assets/scripts/level/level_data";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {object_pool_manager} from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
@@ -11,9 +10,6 @@ const {ccclass, property} = _decorator;
 
 @ccclass('LevelSpawner')
 export class LevelSpawner extends LifecycleComponent {
-    @property({type: LevelManager})
-    levelManager: LevelManager | null = null;
-
     @property({type: Prefab})
     floorPrefab: Prefab | null = null;
 
@@ -27,28 +23,14 @@ export class LevelSpawner extends LifecycleComponent {
         // Reserved for future setup if needed.
     }
 
-    override onStart(): void {
-        if (!this.levelManager) {
-            warn('[LevelSpawner] LevelManager is not assigned.');
-            return;
-        }
-
-        const levelData = this.levelManager.getCurrentLevel();
-        if (!levelData) {
-            warn('[LevelSpawner] No level data available to spawn.');
-            return;
-        }
-
-        this.spawnLevel(levelData);
-    }
-
-    private entitiesMaps: Map<string, IEntities[]> = new Map();
     private floors: Floor[] = [];
 
-    private spawnLevel(levelData: LevelData): void {
+    public spawnLevel(levelData: LevelData): Map<string, IEntities[]> {
+        let entitiesMaps = new Map<string, IEntities[]>();
+        
         if (!this.floorPrefab) {
             warn('[LevelSpawner] Floor prefab is not assigned.');
-            return;
+            return entitiesMaps;
         }
 
         const width = Math.max(0, Math.floor(levelData.levelSize.x));
@@ -56,7 +38,7 @@ export class LevelSpawner extends LifecycleComponent {
 
         if (width === 0 || height === 0) {
             warn(`[LevelSpawner] Invalid level size (${levelData.levelSize.x}x${levelData.levelSize.y}).`);
-            return;
+            return entitiesMaps;
         }
 
         const parentNode = this.entitiesRoot ?? this.node;
@@ -98,7 +80,10 @@ export class LevelSpawner extends LifecycleComponent {
                 if (!floor) continue;
 
                 this.floors.push(floor);
-                this.addEntityToMap(key, floor);
+                if (!entitiesMaps.has(key)) {
+                    entitiesMaps.set(key, []);
+                }
+                entitiesMaps.get(key)!.push(floor);
             }
         }
 
@@ -123,24 +108,13 @@ export class LevelSpawner extends LifecycleComponent {
 
                 const obstacle = spawnEntity<Obstacle>(this.obstaclePrefab, worldPos, new Vec2(x, y), parentNode);
                 if (obstacle) {
-                    this.addEntityToMap(key, obstacle);
+                    if (!entitiesMaps.has(key)) {
+                        entitiesMaps.set(key, []);
+                    }
+                    entitiesMaps.get(key)!.push(obstacle);
                 }
             }
         }
-    }
-
-    private addEntityToMap(key: string, entity: IEntities): void {
-        if (!this.entitiesMaps.has(key)) {
-            this.entitiesMaps.set(key, []);
-        }
-        this.entitiesMaps.get(key)!.push(entity);
-    }
-
-    public makeKey(v: Vec2): string {
-        return `${v.x},${v.y}`;
-    }
-
-    public static vec2Equal(a: Vec2, b: Vec2): boolean {
-        return a.x === b.x && a.y === b.y;
+        return entitiesMaps;
     }
 }

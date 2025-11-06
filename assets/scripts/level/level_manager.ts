@@ -1,6 +1,9 @@
 import {_decorator, JsonAsset, warn} from 'cc';
 import {LevelData} from './level_data';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
+import {LevelSpawner} from "db://assets/scripts/level/level_spawner";
+import {Floor} from "db://assets/scripts/entities/floor";
+import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 
 const {ccclass, property} = _decorator;
 
@@ -33,5 +36,16 @@ export class LevelManager extends LifecycleComponent {
 
     getCurrentLevel(): LevelData | null {
         return this.levelData;
+    }
+
+    @property({type: LevelSpawner})
+    levelSpawner: LevelSpawner | null = null;
+
+    private entitiesMaps: Map<string, IEntities[]> = new Map();
+
+    override onStart(): void {
+        this.entitiesMaps = this.levelSpawner.spawnLevel(this.levelData);
+        
+        console.log(this.entitiesMaps);
     }
 }

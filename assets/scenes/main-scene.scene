@@ -450,6 +450,9 @@
       "__uuid__": "67e71a5e-c9e3-4dfb-82dd-1808cc5fa1ca",
       "__expectedType__": "cc.JsonAsset"
     },
+    "levelSpawner": {
+      "__id__": 12
+    },
     "_id": "38PyTxpmFK0bbnQ3yW3L1E"
   },
   {
@@ -462,9 +465,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "levelManager": {
-      "__id__": 11
-    },
     "floorPrefab": {
       "__uuid__": "21b641e4-3b0b-4132-a248-340c0d53c856",
       "__expectedType__": "cc.Prefab"
