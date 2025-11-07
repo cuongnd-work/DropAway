@@ -231,7 +231,10 @@
     "__prefab": {
       "__id__": 9
     },
-    "_material": null,
+    "_material": {
+      "__uuid__": "67a4a830-bc25-46df-b4a4-95013c2f1d62",
+      "__expectedType__": "cc.PhysicsMaterial"
+    },
     "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",

@@ -23,14 +23,13 @@
       }
     }
   },
-  "devDependencies": {},
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "vue": "^3.1.4",
     "clean-css": "^4.2.1",
-    "jszip": "^3.7.1",
+    "jszip": "^3.10.1",
     "mime-types": "^2.1.32",
-    "uglify-js": "^3.6.0"
+    "uglify-js": "^3.6.0",
+    "vue": "^3.1.4"
   },
   "panels": {
     "default": {
