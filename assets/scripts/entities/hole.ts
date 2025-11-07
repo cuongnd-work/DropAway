@@ -18,7 +18,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     private root: Node = null;
 
     public holeData: HoleData = null;
-
+    
     beginDrag(): void {
         console.log("On touch begin drag " + this.holeData.rotation);
         console.log("On touch begin drag " + this.holeData.position);
@@ -35,6 +35,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     public bindData(data: HoleData): void {
         this.holeData = data;
         this.spawnModel(data);
+        this.node.setPosition(this.node.position.x, 0.5, this.node.position.z);
     }
 
     color: ColorPreset;

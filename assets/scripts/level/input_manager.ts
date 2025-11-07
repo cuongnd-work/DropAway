@@ -70,7 +70,8 @@ export class InputManager extends LifecycleComponent {
                 this._hitPos.set(r.hitPoint);
                 
                 const hole = r.collider.node.parent.parent.parent.getComponent(Hole);
-
+                
+                if(!hole) return;
                 hole.beginDrag();
 
                 this._dragTarget = hole ?? null;
