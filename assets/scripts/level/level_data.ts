@@ -1,6 +1,6 @@
 import {JsonAsset, Vec2, Vec3} from 'cc';
 
-export interface HoleData {
+export class HoleData {
     position: Vec2;
     colorIndex: number;
     innerColorIndex: number;
@@ -11,18 +11,18 @@ export interface HoleData {
     maxPeopleHold: number;
 }
 
-export interface PersonData {
+export class PersonData {
     position: Vec2;
     colorIndex: number;
 }
 
-export interface ElevatorData {
+export class ElevatorData {
     position: Vec2;
     offsetPosition: Vec3;
     people: PersonData[];
 }
 
-export interface RawLevelData {
+export class RawLevelData {
     LevelSize: Vec2;
     LevelDuration: number;
     HoleDataArray?: RawHoleData[];
@@ -32,7 +32,7 @@ export interface RawLevelData {
     CameraSize?: number;
 }
 
-interface RawHoleData {
+class RawHoleData {
     GridPosition: Vec2;
     ColorIndex: number;
     InnerColorIndex?: number;
@@ -43,12 +43,12 @@ interface RawHoleData {
     MaxPeopleHold?: number;
 }
 
-interface RawPersonData {
+class RawPersonData {
     GridPosition: Vec2;
     ColorIndex: number;
 }
 
-interface RawElevatorData {
+class RawElevatorData {
     GridPosition: Vec2;
     OffsetPosition?: Vec3;
     PeopleArray?: RawPersonData[];

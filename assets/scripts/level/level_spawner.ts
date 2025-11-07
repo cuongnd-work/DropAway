@@ -1,4 +1,4 @@
-import {_decorator, Node, Prefab, Vec2, Vec3, warn, Component} from 'cc';
+import {_decorator, Component, Node, Prefab, Vec2, Vec3, warn} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {LevelData} from "db://assets/scripts/level/level_data";
 import {Floor} from "db://assets/scripts/entities/floor";
@@ -48,6 +48,9 @@ export class LevelSpawner extends LifecycleComponent {
         const obstacleSet = new Set<string>(
             levelData.obstaclePositions.map(v => `${v.x},${v.y}`)
         );
+        const holeSet = new Set<string>(
+            levelData.holeData.map(v => `${v.position.x},${v.position.y}`)
+        );
 
         const spawnEntity = <T extends Component & IEntities>(
             prefab: Prefab,
@@ -74,6 +77,22 @@ export class LevelSpawner extends LifecycleComponent {
 
                 if (obstacleSet.has(key)) {
                     continue;
+                }
+
+                if (holeSet.has(key)) {
+                    const holeData = levelData.holeData.find(h => h.position.x === x && h.position.y === y);
+
+                    if (holeData) {
+                        const hole = spawnEntity<Hole>(this.holePrefab, worldPos, gridPos, parentNode);
+                        if (hole) {
+                            hole.bindData(holeData);
+
+                            if (!entitiesMaps.has(key)) {
+                                entitiesMaps.set(key, []);
+                            }
+                            entitiesMaps.get(key)!.push(hole);
+                        }
+                    }
                 }
                 
                 const floor = spawnEntity<Floor>(this.floorPrefab, worldPos, gridPos, parentNode);

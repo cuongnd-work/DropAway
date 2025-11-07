@@ -1,0 +1,191 @@
+{
+  "LevelSize": {
+    "x": 5,
+    "y": 6
+  },
+  "LevelDuration": 300.0,
+  "HoleDataArray": [
+    {
+      "GridPosition": {
+        "x": 2,
+        "y": 4
+      },
+      "ColorIndex": 4,
+      "InnerColorIndex": -1,
+      "Id": 3,
+      "Rotation": 2,
+      "AxisLockType": 0,
+      "ConnectedId": 0,
+      "MaxPeopleHold": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "IsStone": false,
+      "IceCount": -1
+    },
+    {
+      "GridPosition": {
+        "x": 2,
+        "y": 1
+      },
+      "ColorIndex": 1,
+      "InnerColorIndex": -1,
+      "Id": 3,
+      "Rotation": 0,
+      "AxisLockType": 0,
+      "ConnectedId": 0,
+      "MaxPeopleHold": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "IsStone": false,
+      "IceCount": -1
+    },
+    {
+      "GridPosition": {
+        "x": 1,
+        "y": 3
+      },
+      "ColorIndex": 5,
+      "InnerColorIndex": -1,
+      "Id": 1,
+      "Rotation": 1,
+      "AxisLockType": 0,
+      "ConnectedId": 0,
+      "MaxPeopleHold": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "IsStone": false,
+      "IceCount": -1
+    }
+  ],
+  "PeopleDataArray": [
+    {
+      "GridPosition": {
+        "x": 3,
+        "y": 5
+      },
+      "ColorIndex": 4,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 4,
+        "y": 5
+      },
+      "ColorIndex": 4,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 3,
+        "y": 3
+      },
+      "ColorIndex": 4,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 1,
+        "y": 5
+      },
+      "ColorIndex": 4,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 3,
+        "y": 2
+      },
+      "ColorIndex": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 1,
+        "y": 0
+      },
+      "ColorIndex": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 3,
+        "y": 0
+      },
+      "ColorIndex": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 4,
+        "y": 0
+      },
+      "ColorIndex": 1,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 0,
+        "y": 5
+      },
+      "ColorIndex": 5,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    },
+    {
+      "GridPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "ColorIndex": 5,
+      "LockNKeyConfig": {
+        "LockNKeyType": 0,
+        "ColorIndex": -1
+      },
+      "BombTimer": -1
+    }
+  ],
+  "ElevatorDataArray": [],
+  "ObstaclePositions": [],
+  "CameraSize": 20.0
+}

@@ -447,7 +447,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelJson": {
-      "__uuid__": "23ae6ab6-db20-4246-8b6f-3b18ba763aa2",
+      "__uuid__": "7b25082e-4c0b-4d16-91d1-9510c1eab275",
       "__expectedType__": "cc.JsonAsset"
     },
     "levelSpawner": {
@@ -469,7 +469,10 @@
       "__uuid__": "21b641e4-3b0b-4132-a248-340c0d53c856",
       "__expectedType__": "cc.Prefab"
     },
-    "holePrefab": null,
+    "holePrefab": {
+      "__uuid__": "da327d91-81e8-4b5b-98d8-8b757dafc537",
+      "__expectedType__": "cc.Prefab"
+    },
     "obstaclePrefab": {
       "__uuid__": "fc2f2a47-40b0-4420-8964-8796ea37f226",
       "__expectedType__": "cc.Prefab"
