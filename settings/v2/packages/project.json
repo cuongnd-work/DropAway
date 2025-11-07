@@ -6,14 +6,23 @@
       "height": 1280
     }
   },
-  "layer": [],
+  "layer": [
+    {
+      "name": "INPUT_TRIGGER",
+      "value": 1
+    }
+  ],
   "physics": {
     "collisionGroups": [
       {
         "index": 1,
         "name": "HITBOX"
       }
-    ]
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 2
+    }
   },
   "custom_joint_texture_layouts": []
 }

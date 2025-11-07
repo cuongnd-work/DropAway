@@ -1,4 +1,4 @@
-import {_decorator, Camera, Node, EventTouch, geometry, input, Input, PhysicsSystem, Vec3} from 'cc';
+import {_decorator, Camera, Layers, EventTouch, geometry, input, Input, PhysicsSystem, Vec3} from 'cc';
 import {
     LifecycleComponent,
     register_lifecycle
@@ -64,7 +64,9 @@ export class InputManager extends LifecycleComponent {
     }
 
     private _doRaycast() {
-        if (PhysicsSystem.instance.raycastClosest(this._ray)) {
+        const mask = 1 << Layers.nameToLayer('INPUT_TRIGGER');
+
+        if (PhysicsSystem.instance.raycastClosest(this._ray, mask)) {
             const r = PhysicsSystem.instance.raycastClosestResult;
             if (r) {
                 this._hitPos.set(r.hitPoint);
