@@ -5,5 +5,15 @@
       "width": 720,
       "height": 1280
     }
-  }
+  },
+  "layer": [],
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "HITBOX"
+      }
+    ]
+  },
+  "custom_joint_texture_layouts": []
 }

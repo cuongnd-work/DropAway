@@ -3,6 +3,35 @@
 ## Project Structure & Module Organization
 PlayableTemplate targets Cocos Creator 3.8.7. Source assets live in `assets/`: `scripts/` stores TypeScript components, `prefabs/` houses reusable nodes, and `resources/` contains runtime data. Framework utilities (signal bus, lifecycle, object pool) reside under `assets/plugins/game-foundation`. HTML tooling for bundling lives in `assets/plugins/super-html`. Editor-only code for the Super HTML exporter is in `extensions/super-html`, which compiles to `dist/`. Generated artifacts (`build/`, `library/`, `temp/`, and `profiles/`) are cache/output directories; avoid manual edits and keep them out of commits.
 
+## Gameplay Flow & Runtime Logic
+Each play session is orchestrated through `LifecycleComponent`-driven systems so that initialization, spawning, and runtime ticks stay deterministic.
+
+1. **Level bootstrap (`assets/scripts/level/level_manager.ts`)**
+   - `LevelManager` owns a `JsonAsset` reference that the editor fills with the active level. `onInitialize` calls `loadLevelFromAsset`, which sanitizes and converts raw JSON into a strongly-typed `LevelData`.
+   - `LevelData.fromJsonAsset` (`assets/scripts/level/level_data.ts`) converts authored arrays (`HoleDataArray`, `PeopleDataArray`, etc.) into normalized runtime models, providing helpers such as `describe()` for quick logging. Keep new level fields optional in `RawLevelData` and default them inside the constructor so older content never breaks.
+
+2. **Spawning pipeline (`assets/scripts/level/level_spawner.ts`)**
+   - `LevelManager.onStart` hands the parsed `LevelData` to `LevelSpawner.spawnLevel`. The spawner receives prefab handles for floors, holes, and obstacles plus an optional `entitiesRoot` to keep the hierarchy tidy.
+   - `spawnLevel` walks the grid defined by `LevelData.levelSize`, translates grid coordinates to world-space offsets, and uses `object_pool_manager.instance.Spawn` to reuse prefabs. Occupied coordinates are tracked in `entitiesMaps`, a `Map<string, IEntities[]>` keyed by `x,y`.
+   - Holes use their `HoleData.id` to pick a sub-prefab inside `Hole.holePrefabs`, bind meta-data (`Hole.bindData`), and can later react to drag events via `IDragable`.
+   - Floor tiles always spawn (unless an obstacle blocks the tile) and accumulate inside `this.floors` so edge detection can run after the main grid pass.
+   - Obstacle prefabs are only instantiated on perimeter tiles. After spawning, `Obstacle.setupInit` inspects neighbouring `IEntities` to decide which side meshes (`top`, `right`, etc.) should be visible, preventing z-fighting and unnecessary geometry.
+
+3. **Entity contracts (`assets/scripts/entities/*`)**
+   - All placeable gameplay objects implement `IEntities` so grid comparisons (`Vec2.equals`) remain uniform. Additional capabilities layer on via interfaces such as `IHasColor` or `IDragable`.
+   - `ColorPreset` enumerates palette indices shared between people, holes, and elevators; keep it synchronized with art exports so prefab lookups remain valid.
+   - When introducing a new entity type, make sure it sets `position` immediately after spawning (mirroring the `spawnEntity` helper) so downstream systems like pathfinding or obstacle gating can reason about it.
+
+4. **Runtime systems**
+   - `input_manager` is registered with the lifecycle decorator and is ready to listen for pointer or keyboard events once interaction logic is defined. Plug movement/drag evaluations into `onTick` for frame-based polling or use Cocos events to remain event-driven.
+   - Elevator and people data already flow through `LevelData`; implement their components under `assets/scripts/entities/` and extend the spawner with additional prefabs when those mechanics come online.
+
+### Updating Flow or Logic Safely
+- Validate new JSON schemas by extending `Raw*` types in `level_data.ts` first, then regenerate/attach the JsonAsset in the editor. Call `LevelData.describe()` in logs when debugging imports.
+- Prefer augmenting `LevelSpawner.spawnLevel` with small helpers (similar to `spawnEntity`) to keep pooling and coordinate math centralized; resist instantiating prefabs directly from other systems.
+- Whenever you add lifecycle hooks (e.g., custom `onTick` logic on `Hole`), remember that these components may be pooled—reset mutable state in `onDisable`/`onDestroy` to avoid leaking data between spawns.
+- For interaction changes, keep the chain `input_manager -> LevelManager -> entity` explicit so gameplay code remains testable in the simulator. Drive state transitions through data (`LevelData`, `HoleData`, etc.) instead of hard-coded scene references.
+
 ## Build, Test, and Development Commands
 Open the project with Cocos Creator 3.8.7 (`CocosCreator --project .`). Use the build task to produce a playable bundle: `CocosCreator --project . --build "platform=html5;debug=false"`, which writes to `build/web-mobile`. While iterating on the Super HTML exporter, run `cd extensions/super-html && npm install` once, then `npx tsc -b` for a production compile or `npx tsc -w` to watch. Launch the in-editor simulator (`Ctrl+P` / `Cmd+P`) for quick runtime checks before exporting.
 

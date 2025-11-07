@@ -20,12 +20,16 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     public holeData: HoleData = null;
 
     beginDrag(): void {
+        console.log("On touch begin drag " + this.holeData.rotation);
+        console.log("On touch begin drag " + this.holeData.position);
     }
 
-    drag(): void {
+    drag(touchPos: Vec3): void {
+        console.log("On touch drag " + touchPos);
     }
 
     endDrag(): void {
+        console.log("On touch end drag ");
     }
 
     public bindData(data: HoleData): void {
