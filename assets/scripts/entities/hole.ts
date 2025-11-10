@@ -1,15 +1,15 @@
-﻿import { _decorator, Node, Prefab, PhysicsSystem, Vec2, Vec3, RigidBody } from 'cc';
-import { LifecycleComponent } from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
-import { IEntities } from "db://assets/scripts/entities/base/IEntities";
-import { IHasColor } from "db://assets/scripts/entities/base/IHasColor";
-import { ColorPreset } from "./base/colorPreset";
-import { IDragable } from "db://assets/scripts/entities/base/IDragable";
-import { HoleData } from "db://assets/scripts/level/level_data";
-import { object_pool_manager } from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
+﻿import {_decorator, Collider, ICollisionEvent, Node, Prefab, RigidBody, Vec2, Vec3} from 'cc';
+import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
+import {IEntities} from "db://assets/scripts/entities/base/IEntities";
+import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
+import {IDragable} from "db://assets/scripts/entities/base/IDragable";
+import {HoleData} from "db://assets/scripts/level/level_data";
+import {object_pool_manager} from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
 import {HoleView} from "db://assets/scripts/entities/holeModel/holeView";
 import {constant} from "db://assets/configs/constant";
+import {People} from "db://assets/scripts/entities/people";
 
-const { ccclass, property } = _decorator;
+const {ccclass, property} = _decorator;
 
 @ccclass('Hole')
 export class Hole extends LifecycleComponent implements IEntities, IHasColor, IDragable {
@@ -25,12 +25,27 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     private _rb: RigidBody | null = null;
     private _targetPos = new Vec3();
     private _dragging = false;
-    private _holeView : HoleView = null;
+    private _holeView: HoleView = null;
 
     public holeData: HoleData = null;
-    color: ColorPreset;
+    color: number;
     position: Vec2;
-    
+
+    private _slot: number = 0;
+
+    private onCollisionEnter(event: ICollisionEvent) {
+        let people = event.otherCollider.node.parent.getComponent(People);
+        if (people) {
+            if (people.tryCollect(this)) {
+                this.tryCompleteHole();
+            }
+        }
+    }
+
+    private tryCompleteHole(): void {
+
+    }
+
     beginDrag(): void {
         this._dragging = true;
         this._targetPos.set(this._holeView.node.worldPosition);
@@ -53,7 +68,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         this._rb.linearFactor = new Vec3(0, 0, 0);
         this._holeView.endDrag();
     }
-    
+
     override onTick(dt: number) {
         if (!this._dragging || !this._rb) return;
 
@@ -71,6 +86,8 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
     public bindData(data: HoleData): void {
         this.holeData = data;
+        this.position = data.position;
+        this.color = data.colorIndex;
         this._holeView = this.spawnModel(data).getComponent(HoleView);
         this._holeView.bindData(this);
         this._rb = this._holeView.getComponent(RigidBody);
@@ -84,6 +101,18 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
         this._holeView.node.setPosition(this.node.position.x, 0, this.node.position.z);
         this.node.setPosition(0, constant.GAME_PLAY.HOLE_OFFSET, 0);
+
+        const collider = this._holeView.getComponent(Collider);
+        if (collider) {
+            collider.on('onCollisionEnter', this.onCollisionEnter, this);
+        }
+    }
+
+    protected onDispose() {
+        const collider = this._holeView.getComponent(Collider);
+        if (collider) {
+            collider.off('onCollisionEnter', this.onCollisionEnter, this);
+        }
     }
 
     private spawnModel(data: HoleData) {

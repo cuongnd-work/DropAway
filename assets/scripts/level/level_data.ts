@@ -72,7 +72,12 @@ export class LevelData {
         this.holeData = (raw.HoleDataArray ?? []).map(LevelData.mapHoleData);
         this.peopleData = (raw.PeopleDataArray ?? []).map(LevelData.mapPersonData);
         this.elevatorData = (raw.ElevatorDataArray ?? []).map(LevelData.mapElevatorData);
-        this.obstaclePositions = (raw.ObstaclePositions ?? []).map(r => r);
+        this.obstaclePositions = (raw.ObstaclePositions ?? []).map((point) => {
+            if (!point) {
+                return new Vec2();
+            }
+            return new Vec2(point.x ?? 0, point.y ?? 0);
+        });
         this.cameraSize = typeof raw.CameraSize === 'number' ? raw.CameraSize : 0;
     }
 
@@ -113,8 +118,11 @@ export class LevelData {
 
 
     private static mapHoleData(raw: RawHoleData): HoleData {
+        const grid = raw.GridPosition;
+        const position = grid ? new Vec2(grid.x ?? 0, grid.y ?? 0) : new Vec2();
+
         return {
-            position: raw.GridPosition,
+            position,
             colorIndex: raw.ColorIndex ?? 0,
             innerColorIndex: raw.InnerColorIndex ?? -1,
             id: raw.Id ?? 0,
@@ -126,15 +134,21 @@ export class LevelData {
     }
 
     private static mapPersonData(raw: RawPersonData): PersonData {
+        const grid = raw.GridPosition;
+        const position = grid ? new Vec2(grid.x ?? 0, grid.y ?? 0) : new Vec2();
+
         return {
-            position: raw.GridPosition,
+            position,
             colorIndex: raw.ColorIndex ?? 0
         };
     }
 
     private static mapElevatorData(raw: RawElevatorData): ElevatorData {
+        const grid = raw.GridPosition;
+        const position = grid ? new Vec2(grid.x ?? 0, grid.y ?? 0) : new Vec2();
+
         return {
-            position: raw.GridPosition,
+            position,
             offsetPosition: raw.OffsetPosition,
             people: (raw.PeopleArray ?? []).map(LevelData.mapPersonData)
         };

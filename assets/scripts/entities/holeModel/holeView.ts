@@ -1,4 +1,4 @@
-import {_decorator, Component, Tween, Vec3, Node, tween} from 'cc';
+import {_decorator, Component, Tween, Vec3, Node, tween, Collider} from 'cc';
 import {Hole} from "db://assets/scripts/entities/hole";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {Floor} from "db://assets/scripts/entities/floor";
@@ -12,7 +12,7 @@ export class HoleView extends Component {
     private id: string = "";
 
     @property(Node)
-    private hit_box: Node = null;
+    public hit_box: Node = null;
 
     private hole: Hole = null;
 
