@@ -1,11 +1,9 @@
-import {_decorator, Camera, Layers, EventTouch, geometry, input, Input, PhysicsSystem, Vec3} from 'cc';
+import {_decorator, Camera, EventTouch, geometry, input, Input, Layers, Node, PhysicsSystem, Vec3} from 'cc';
 import {
     LifecycleComponent,
     register_lifecycle
 } from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
-import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {Hole} from "db://assets/scripts/entities/hole";
-import {IDragable} from "db://assets/scripts/entities/base/IDragable";
 
 const {ccclass, property} = _decorator;
 
@@ -19,7 +17,7 @@ export class InputManager extends LifecycleComponent {
     private _hitPos = new Vec3();
     private _dragTarget: Hole | null = null;
 
-    override onStart() {
+    override onInitialize() {
         input.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
         input.on(Input.EventType.TOUCH_MOVE, this._onTouchDrag, this);
         input.on(Input.EventType.TOUCH_END, this._onTouchEnd, this);
@@ -33,27 +31,25 @@ export class InputManager extends LifecycleComponent {
 
     private _onTouchStart(event: EventTouch) {
         if (!this.camera) return;
-        const location = event.getLocation();
-        const x = location.x;
-        const y = location.y;
-
-        this.camera.screenPointToRay(x, y, this._ray);
+        const loc = event.getLocation();
+        this.camera.screenPointToRay(loc.x, loc.y, this._ray);
         this._doRaycast();
     }
-    
+
     private _onTouchDrag(e: EventTouch) {
         if (!this._dragTarget || !this.camera) return;
         const x = e.getLocationX();
         const y = e.getLocationY();
 
         this.camera.screenPointToRay(x, y, this._ray);
+
         const t = -this._ray.o.y / this._ray.d.y;
         const pos = new Vec3(
             this._ray.o.x + this._ray.d.x * t,
             0,
             this._ray.o.z + this._ray.d.z * t
         );
-        
+
         this._dragTarget.drag(pos);
     }
 
@@ -64,28 +60,47 @@ export class InputManager extends LifecycleComponent {
     }
 
     private _doRaycast() {
+        if (!this.camera) return;
+
         const mask = 1 << Layers.nameToLayer('INPUT_TRIGGER');
 
-        if (PhysicsSystem.instance.raycastClosest(this._ray, mask)) {
-            const r = PhysicsSystem.instance.raycastClosestResult;
-            if (r) {
-                this._hitPos.set(r.hitPoint);
-                
-                const hole = r.collider.node.parent.parent.parent.getComponent(Hole);
-                
-                if(!hole) return;
-                hole.beginDrag();
+        if (!PhysicsSystem.instance.raycast(this._ray, mask)) return;
 
-                this._dragTarget = hole ?? null;
-                
-                console.log(
-                    `%c🎯 Hit: ${r.collider.node.name}`,
-                    'color: lime',
-                    '\n• Distance:', r.distance.toFixed(3),
-                    '\n• Point:', r.hitPoint,
-                    '\n• Normal:', r.hitNormal
-                );
-            }
+        const results = PhysicsSystem.instance.raycastResults;
+        if (!results || results.length === 0) return;
+
+        let targetNode: Node | null = null;
+        for (const r of results) {
+            if (!r.collider) continue;
+
+            const nodeLayer = r.collider.node.layer;
+            if ((nodeLayer & mask) === 0) continue;
+
+            targetNode = r.collider.node;
+            break;
         }
+
+        if (!targetNode) return;
+
+        this._hitPos.set(targetNode.worldPosition);
+
+        let cur: Node | null = targetNode;
+        let hole: Hole | null = null;
+        while (cur) {
+            hole = cur.getComponent(Hole);
+            if (hole) break;
+            cur = cur.parent;
+        }
+
+        if (!hole) return;
+
+        hole.beginDrag();
+        this._dragTarget = hole;
+
+        console.log(
+            `%c🎯 Hit: ${targetNode.name}`,
+            'color: lime',
+            '\n• World Position:', targetNode.worldPosition
+        );
     }
 }
