@@ -22,8 +22,6 @@ export class Obstacle extends LifecycleComponent implements IEntities {
     private bottom: Node = null;
 
     public setupInit(neighbors: IEntities[]): void {
-        console.log("Initializing Obstacle " + neighbors.length + " neighbors");
-
         this.top.active = false;
         this.bottom.active = false;
         this.left.active = false;
