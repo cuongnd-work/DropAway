@@ -1,5 +1,6 @@
-import {_decorator, Component} from 'cc';
+import {_decorator, Component, RigidBody} from 'cc';
 import {Hole} from "db://assets/scripts/entities/hole";
+import {HoleData} from "db://assets/scripts/level/level_data";
 
 const {ccclass, property} = _decorator;
 
@@ -10,4 +11,9 @@ export class HoleView extends Component {
     
     @property(Hole)
     private hole: Hole = null;
+    
+    public bindData(data: HoleData) {
+        
+    }
+
 }

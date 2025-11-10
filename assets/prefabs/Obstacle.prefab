@@ -365,7 +365,7 @@
     "__prefab": {
       "__id__": 20
     },
-    "_group": 1,
+    "_group": 2,
     "_type": 2,
     "_mass": 1,
     "_allowSleep": true,
@@ -709,7 +709,7 @@
     "__prefab": {
       "__id__": 41
     },
-    "_group": 1,
+    "_group": 2,
     "_type": 2,
     "_mass": 1,
     "_allowSleep": true,
@@ -1053,7 +1053,7 @@
     "__prefab": {
       "__id__": 62
     },
-    "_group": 1,
+    "_group": 2,
     "_type": 2,
     "_mass": 1,
     "_allowSleep": true,
@@ -1366,7 +1366,7 @@
       "__id__": 81
     },
     "_material": null,
-    "_isTrigger": true,
+    "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -1397,7 +1397,7 @@
     "__prefab": {
       "__id__": 83
     },
-    "_group": 1,
+    "_group": 2,
     "_type": 2,
     "_mass": 1,
     "_allowSleep": true,

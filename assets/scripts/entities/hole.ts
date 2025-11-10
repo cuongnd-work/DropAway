@@ -6,6 +6,7 @@ import { ColorPreset } from "./base/colorPreset";
 import { IDragable } from "db://assets/scripts/entities/base/IDragable";
 import { HoleData } from "db://assets/scripts/level/level_data";
 import { object_pool_manager } from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
+import {HoleView} from "db://assets/scripts/entities/holeModel/holeView";
 
 const { ccclass, property } = _decorator;
 
@@ -23,41 +24,36 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     private _rb: RigidBody | null = null;
     private _targetPos = new Vec3();
     private _dragging = false;
+    private _holeView : HoleView = null;
 
     public holeData: HoleData = null;
     color: ColorPreset;
     position: Vec2;
 
-    override onStart() {
-        this._rb = this.getComponent(RigidBody);
-        if (this._rb) {
-            this._rb.useGravity = false;
-        }
-        this._targetPos.set(this.node.worldPosition);
-    }
-
     beginDrag(): void {
         this._dragging = true;
-        this._targetPos.set(this.node.worldPosition);
-        console.log("🟢 Begin drag:", this.holeData?.position);
+        this._targetPos.set(this._holeView.node.worldPosition);
+        this._rb.wakeUp();
+        this._rb.linearFactor = new Vec3(1, 0, 1);
     }
 
     drag(worldPos: Vec3): void {
         if (!this._dragging) return;
-        this._targetPos.set(worldPos.x, this.node.worldPosition.y, worldPos.z);
+        this._targetPos.set(worldPos.x, this._holeView.node.worldPosition.y, worldPos.z);
     }
 
     endDrag(): void {
         if (!this._rb) return;
         this._dragging = false;
         this._rb.setLinearVelocity(Vec3.ZERO);
-        console.log("🔴 End drag");
+        this._rb.sleep();
+        this._rb.linearFactor = new Vec3(0, 0, 0);
     }
 
     override onTick(dt: number) {
         if (!this._dragging || !this._rb) return;
 
-        const current = this.node.worldPosition;
+        const current = this._holeView.node.worldPosition;
         const next = new Vec3();
         Vec3.lerp(next, current, this._targetPos, dt * this.speed);
 
@@ -70,12 +66,23 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
     public bindData(data: HoleData): void {
         this.holeData = data;
-        this.spawnModel(data);
-        this.node.setPosition(this.node.position.x, 0.1, this.node.position.z);
+        this._holeView = this.spawnModel(data).getComponent(HoleView);
+        this._holeView.bindData(data);
+        this._rb = this._holeView.getComponent(RigidBody);
+        if (this._rb) {
+            this._rb.useGravity = false;
+            this._rb.angularFactor = new Vec3(0, 0, 0);
+            this._rb.linearFactor = new Vec3(0, 0, 0);
+            this._rb.sleep();
+        }
+        this._targetPos.set(this.node.worldPosition);
+
+        this._holeView.node.setPosition(this.node.position.x, 0, this.node.position.z);
+        this.node.setPosition(0, 0.1, 0);
     }
 
     private spawnModel(data: HoleData) {
-        object_pool_manager.instance.Spawn(
+        return object_pool_manager.instance.Spawn(
             this.holePrefabs[data.id],
             null,
             null,
