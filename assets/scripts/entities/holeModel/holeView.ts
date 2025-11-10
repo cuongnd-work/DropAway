@@ -14,6 +14,12 @@ export class HoleView extends Component {
     @property(Node)
     public hit_box: Node = null;
 
+    @property(Node)
+    public dropPoint: Node = null;
+
+    @property
+    public maxPeopleInHole: number = 1;
+
     private hole: Hole = null;
 
     private _currentTween: Tween<Node> | null = null;

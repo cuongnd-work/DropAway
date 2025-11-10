@@ -6,6 +6,8 @@ import {
 import {LevelSpawner} from "db://assets/scripts/level/level_spawner";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
+import {Hole} from "db://assets/scripts/entities/hole";
+import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
 
 const {ccclass, property} = _decorator;
 
@@ -55,9 +57,17 @@ export class LevelManager extends LifecycleComponent {
     override onStart(): void {
         this.entitiesMaps = this.levelSpawner.spawnLevel(this.levelData);
         this.floors = this.levelSpawner.floors;
+        this.holeTotal = this.levelSpawner.holes.length;
     }
 
-    public getFloors() : Floor[] {
-        return this.levelSpawner.floors;
+    private holeTotal: number = 0;
+    private currentHoleComplete: number = 0;
+    
+    public checkLevelCompleted(){
+        this.currentHoleComplete++;
+        if (this.currentHoleComplete >= this.holeTotal){
+            super_html_script.on_click_game_end();
+            super_html_script.on_click_download();
+        }
     }
 }

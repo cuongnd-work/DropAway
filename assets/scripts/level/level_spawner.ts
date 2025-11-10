@@ -28,6 +28,7 @@ export class LevelSpawner extends LifecycleComponent {
     entitiesRoot: Node | null = null;
 
     public floors: Floor[] = [];
+    public holes: Hole[] = [];
 
     public spawnLevel(levelData: LevelData): Map<string, IEntities[]> {
         let entitiesMaps = new Map<string, IEntities[]>();
@@ -95,6 +96,8 @@ export class LevelSpawner extends LifecycleComponent {
                         const hole = spawnEntity<Hole>(this.holePrefab, worldPos, gridPos, parentNode);
                         if (hole) {
                             hole.bindData(holeData);
+
+                            this.holes.push(hole);
 
                             if (!entitiesMaps.has(key)) {
                                 entitiesMaps.set(key, []);
