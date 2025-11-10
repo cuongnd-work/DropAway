@@ -36,7 +36,9 @@ export class HoleView extends Component {
         }
     }
 
-    drag(worldPos: Vec3): void {
+    drag(): void {
+        this.CheckFloorStep();
+        this.CheckPeopleJump();
     }
 
     endDrag(): void {
@@ -79,4 +81,9 @@ export class HoleView extends Component {
         }
     }
 
+    private CheckFloorStep() {
+    }
+
+    private CheckPeopleJump() {
+    }
 }

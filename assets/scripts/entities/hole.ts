@@ -42,7 +42,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     drag(worldPos: Vec3): void {
         if (!this._dragging) return;
         this._targetPos.set(worldPos.x, this._holeView.node.worldPosition.y, worldPos.z);
-        this._holeView.drag(worldPos);
+        this._holeView.drag();
     }
 
     endDrag(): void {

@@ -1,8 +1,7 @@
 import {_decorator, JsonAsset, warn} from 'cc';
 import {LevelData} from './level_data';
 import {
-    LifecycleComponent,
-    register_lifecycle
+    LifecycleComponent
 } from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {LevelSpawner} from "db://assets/scripts/level/level_spawner";
 import {Floor} from "db://assets/scripts/entities/floor";
@@ -41,7 +40,6 @@ export class LevelManager extends LifecycleComponent {
         }
 
         this.levelData = parsed;
-        console.log(parsed);
     }
 
     getCurrentLevel(): LevelData | null {

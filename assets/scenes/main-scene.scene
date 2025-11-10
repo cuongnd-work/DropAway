@@ -476,6 +476,10 @@
       "__uuid__": "da327d91-81e8-4b5b-98d8-8b757dafc537",
       "__expectedType__": "cc.Prefab"
     },
+    "peoplePrefab": {
+      "__uuid__": "c1a778bf-8cd1-4966-b245-6d6d30250f43",
+      "__expectedType__": "cc.Prefab"
+    },
     "obstaclePrefab": {
       "__uuid__": "fc2f2a47-40b0-4420-8964-8796ea37f226",
       "__expectedType__": "cc.Prefab"

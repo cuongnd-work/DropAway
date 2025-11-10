@@ -7,4 +7,10 @@ const {ccclass} = _decorator;
 @ccclass('Floor')
 export class Floor extends LifecycleComponent implements IEntities {
     position: Vec2 = new Vec2();
+    
+    private isStepped: boolean = false;
+    
+    public step(){
+        
+    }
 }

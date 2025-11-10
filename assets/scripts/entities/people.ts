@@ -3,6 +3,7 @@ import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-f
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
 import {ColorPreset} from "./base/colorPreset";
+import {PersonData} from "db://assets/scripts/level/level_data";
 
 const {ccclass, property} = _decorator;
 
@@ -10,4 +11,10 @@ const {ccclass, property} = _decorator;
 export class People extends LifecycleComponent implements IEntities, IHasColor {
     color: ColorPreset;
     position: math.Vec2;
+
+    public isCollected: boolean = false;
+
+    bindData(data: PersonData): void {
+
+    }
 }

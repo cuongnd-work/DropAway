@@ -6,6 +6,7 @@ import {object_pool_manager} from "db://assets/plugins/playable-foundation/game-
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {Obstacle} from "db://assets/scripts/entities/obstacle";
 import {Hole} from "db://assets/scripts/entities/hole";
+import {People} from "db://assets/scripts/entities/people";
 
 const {ccclass, property} = _decorator;
 
@@ -16,6 +17,9 @@ export class LevelSpawner extends LifecycleComponent {
 
     @property({type: Prefab})
     holePrefab: Prefab | null = null;
+
+    @property({type: Prefab})
+    peoplePrefab: Prefab | null = null;
 
     @property({type: Prefab})
     obstaclePrefab: Prefab | null = null;
@@ -48,8 +52,13 @@ export class LevelSpawner extends LifecycleComponent {
         const obstacleSet = new Set<string>(
             levelData.obstaclePositions.map(v => `${v.x},${v.y}`)
         );
+        
         const holeSet = new Set<string>(
             levelData.holeData.map(v => `${v.position.x},${v.position.y}`)
+        );
+
+        const peopleSet = new Set<string>(
+            levelData.peopleData.map(v => `${v.position.x},${v.position.y}`)
         );
 
         const spawnEntity = <T extends Component & IEntities>(
@@ -91,6 +100,22 @@ export class LevelSpawner extends LifecycleComponent {
                                 entitiesMaps.set(key, []);
                             }
                             entitiesMaps.get(key)!.push(hole);
+                        }
+                    }
+                }
+
+                if (peopleSet.has(key)) {
+                    const peopleData = levelData.peopleData.find(h => h.position.x === x && h.position.y === y);
+
+                    if (peopleData) {
+                        const people = spawnEntity<People>(this.peoplePrefab, worldPos, gridPos, parentNode);
+                        if (people) {
+                            people.bindData(peopleData);
+
+                            if (!entitiesMaps.has(key)) {
+                                entitiesMaps.set(key, []);
+                            }
+                            entitiesMaps.get(key)!.push(people);
                         }
                     }
                 }
