@@ -1,4 +1,4 @@
-﻿import { _decorator, Node, Prefab, Quat, Vec2, Vec3, RigidBody } from 'cc';
+﻿import { _decorator, Node, Prefab, PhysicsSystem, Vec2, Vec3, RigidBody } from 'cc';
 import { LifecycleComponent } from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import { IEntities } from "db://assets/scripts/entities/base/IEntities";
 import { IHasColor } from "db://assets/scripts/entities/base/IHasColor";
@@ -62,12 +62,13 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         vel.multiplyScalar(1 / dt);
 
         this._rb.setLinearVelocity(vel);
+        this._holeView.updateHitBoxCollider(vel);
     }
 
     public bindData(data: HoleData): void {
         this.holeData = data;
         this._holeView = this.spawnModel(data).getComponent(HoleView);
-        this._holeView.bindData(data);
+        this._holeView.bindData(this);
         this._rb = this._holeView.getComponent(RigidBody);
         if (this._rb) {
             this._rb.useGravity = false;
