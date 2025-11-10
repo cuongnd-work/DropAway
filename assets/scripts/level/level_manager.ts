@@ -1,6 +1,9 @@
 import {_decorator, JsonAsset, warn} from 'cc';
 import {LevelData} from './level_data';
-import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
+import {
+    LifecycleComponent,
+    register_lifecycle
+} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {LevelSpawner} from "db://assets/scripts/level/level_spawner";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
@@ -13,8 +16,15 @@ export class LevelManager extends LifecycleComponent {
     levelJson: JsonAsset | null = null;
 
     private levelData: LevelData | null = null;
-    
+
+    private static _instance: LevelManager = new LevelManager();
+
+    public static get instance(): LevelManager {
+        return this._instance;
+    }
+
     override onInitialize(): void {
+        LevelManager._instance = this;
         this.loadLevelFromAsset(this.levelJson);
     }
 
@@ -41,11 +51,15 @@ export class LevelManager extends LifecycleComponent {
     @property({type: LevelSpawner})
     levelSpawner: LevelSpawner | null = null;
 
-    private entitiesMaps: Map<string, IEntities[]> = new Map();
-
+    public entitiesMaps: Map<string, IEntities[]> = new Map();
+    public floors: Floor[] = [];
+    
     override onStart(): void {
         this.entitiesMaps = this.levelSpawner.spawnLevel(this.levelData);
-        
-        console.log(this.entitiesMaps);
+        this.floors = this.levelSpawner.floors;
+    }
+
+    public getFloors() : Floor[] {
+        return this.levelSpawner.floors;
     }
 }

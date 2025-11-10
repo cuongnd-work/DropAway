@@ -23,7 +23,7 @@ export class LevelSpawner extends LifecycleComponent {
     @property({type: Node})
     entitiesRoot: Node | null = null;
 
-    private floors: Floor[] = [];
+    public floors: Floor[] = [];
 
     public spawnLevel(levelData: LevelData): Map<string, IEntities[]> {
         let entitiesMaps = new Map<string, IEntities[]>();

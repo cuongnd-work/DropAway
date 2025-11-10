@@ -18,5 +18,9 @@
         EFFECT_EX: 'effect_ex',
         DEFAULT: ''
     }
-
+    
+    static GAME_PLAY = {
+        HOLE_OFFSET: 0.1,
+        DEFAULT: ''
+    }
 }

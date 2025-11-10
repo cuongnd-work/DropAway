@@ -7,6 +7,7 @@ import { IDragable } from "db://assets/scripts/entities/base/IDragable";
 import { HoleData } from "db://assets/scripts/level/level_data";
 import { object_pool_manager } from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
 import {HoleView} from "db://assets/scripts/entities/holeModel/holeView";
+import {constant} from "db://assets/configs/constant";
 
 const { ccclass, property } = _decorator;
 
@@ -29,17 +30,19 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     public holeData: HoleData = null;
     color: ColorPreset;
     position: Vec2;
-
+    
     beginDrag(): void {
         this._dragging = true;
         this._targetPos.set(this._holeView.node.worldPosition);
         this._rb.wakeUp();
         this._rb.linearFactor = new Vec3(1, 0, 1);
+        this._holeView.beginDrag();
     }
 
     drag(worldPos: Vec3): void {
         if (!this._dragging) return;
         this._targetPos.set(worldPos.x, this._holeView.node.worldPosition.y, worldPos.z);
+        this._holeView.drag(worldPos);
     }
 
     endDrag(): void {
@@ -48,8 +51,9 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         this._rb.setLinearVelocity(Vec3.ZERO);
         this._rb.sleep();
         this._rb.linearFactor = new Vec3(0, 0, 0);
+        this._holeView.endDrag();
     }
-
+    
     override onTick(dt: number) {
         if (!this._dragging || !this._rb) return;
 
@@ -79,7 +83,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         this._targetPos.set(this.node.worldPosition);
 
         this._holeView.node.setPosition(this.node.position.x, 0, this.node.position.z);
-        this.node.setPosition(0, 0.1, 0);
+        this.node.setPosition(0, constant.GAME_PLAY.HOLE_OFFSET, 0);
     }
 
     private spawnModel(data: HoleData) {

@@ -96,11 +96,5 @@ export class InputManager extends LifecycleComponent {
 
         hole.beginDrag();
         this._dragTarget = hole;
-
-        console.log(
-            `%c🎯 Hit: ${targetNode.name}`,
-            'color: lime',
-            '\n• World Position:', targetNode.worldPosition
-        );
     }
 }
