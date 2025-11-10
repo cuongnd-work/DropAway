@@ -7,6 +7,7 @@ import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {Obstacle} from "db://assets/scripts/entities/obstacle";
 import {Hole} from "db://assets/scripts/entities/hole";
 import {People} from "db://assets/scripts/entities/people";
+import {Elevator} from "db://assets/scripts/entities/elevator";
 
 const {ccclass, property} = _decorator;
 
@@ -20,6 +21,9 @@ export class LevelSpawner extends LifecycleComponent {
 
     @property({type: Prefab})
     peoplePrefab: Prefab | null = null;
+
+    @property({type: Prefab})
+    elevatorPrefab: Prefab | null = null;
 
     @property({type: Prefab})
     obstaclePrefab: Prefab | null = null;
@@ -60,6 +64,10 @@ export class LevelSpawner extends LifecycleComponent {
 
         const peopleSet = new Set<string>(
             levelData.peopleData.map(v => `${v.position.x},${v.position.y}`)
+        );
+
+        const elevatorSet = new Set<string>(
+            levelData.elevatorData.map(v => `${v.position.x},${v.position.y}`)
         );
 
         const spawnEntity = <T extends Component & IEntities>(
@@ -119,6 +127,22 @@ export class LevelSpawner extends LifecycleComponent {
                                 entitiesMaps.set(key, []);
                             }
                             entitiesMaps.get(key)!.push(people);
+                        }
+                    }
+                }
+
+                if (elevatorSet.has(key)) {
+                    const elevatorData = levelData.elevatorData.find(h => h.position.x === x && h.position.y === y);
+
+                    if (elevatorData) {
+                        const elevator = spawnEntity<Elevator>(this.elevatorPrefab, worldPos, gridPos, parentNode);
+                        if (elevator) {
+                            elevator.bindData(elevatorData);
+
+                            if (!entitiesMaps.has(key)) {
+                                entitiesMaps.set(key, []);
+                            }
+                            entitiesMaps.get(key)!.push(elevator);
                         }
                     }
                 }

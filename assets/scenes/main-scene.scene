@@ -450,7 +450,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelJson": {
-      "__uuid__": "0d8a64db-e848-44a0-b8a1-41b22f7fb601",
+      "__uuid__": "23ae6ab6-db20-4246-8b6f-3b18ba763aa2",
       "__expectedType__": "cc.JsonAsset"
     },
     "levelSpawner": {
@@ -478,6 +478,10 @@
     },
     "peoplePrefab": {
       "__uuid__": "c1a778bf-8cd1-4966-b245-6d6d30250f43",
+      "__expectedType__": "cc.Prefab"
+    },
+    "elevatorPrefab": {
+      "__uuid__": "911dcd92-8b16-4149-a648-3399774cb2ea",
       "__expectedType__": "cc.Prefab"
     },
     "obstaclePrefab": {
