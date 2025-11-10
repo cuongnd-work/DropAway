@@ -59,7 +59,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
                 new Tween(this.node)
                     .to(duration, { position: targetPos }, { easing: 'sineIn' }),
                 new Tween(this.node)
-                    .to(duration, { scale: new Vec3(0.5, 0.5, 0.5) }, { easing: 'sineIn' })
+                    .to(duration, { scale: new Vec3(0.6, 0.6, 0.6) }, { easing: 'sineIn' })
             )
             .call(() => {
                 this.node.active = false;
