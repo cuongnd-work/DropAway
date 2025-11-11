@@ -450,7 +450,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelJson": {
-      "__uuid__": "23ae6ab6-db20-4246-8b6f-3b18ba763aa2",
+      "__uuid__": "0d8a64db-e848-44a0-b8a1-41b22f7fb601",
       "__expectedType__": "cc.JsonAsset"
     },
     "levelSpawner": {
