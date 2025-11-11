@@ -137,7 +137,7 @@ export class LevelSpawner extends LifecycleComponent {
                     if (elevatorData) {
                         const elevator = spawnEntity<Elevator>(this.elevatorPrefab, worldPos, gridPos, parentNode);
                         if (elevator) {
-                            elevator.bindData(elevatorData);
+                            elevator.bindData(elevatorData, levelData.levelSize.x, levelData.levelSize.y);
 
                             if (!entitiesMaps.has(key)) {
                                 entitiesMaps.set(key, []);

@@ -1,4 +1,4 @@
-﻿import {_decorator, math, Prefab, Node} from 'cc';
+﻿import {_decorator, math, Prefab, Node, Vec3} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {ElevatorData} from "db://assets/scripts/level/level_data";
@@ -16,10 +16,13 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
     @property(Node)
     private root: Node = null;
+
+    @property(Node)
+    private view: Node = null;
     
     public peoples: People[] = [];
 
-    public bindData(datas: ElevatorData) {
+    public bindData(datas: ElevatorData, maxXGrid: number, maxYGrid: number) {
         for (let data of datas.people) {
             let people = object_pool_manager.instance.Spawn(
                 this.peoplePrefab,
@@ -31,5 +34,38 @@ export class Elevator extends LifecycleComponent implements IEntities {
             people.bindData(data);
             this.peoples.push(people);
         }
+
+        if (!this.view) return;
+
+        const x = this.position.x;
+        const y = this.position.y;
+
+        const distLeft = x;
+        const distRight = maxXGrid - 1 - x;
+        const distBottom = y;
+        const distTop = maxYGrid - 1 - y;
+
+        const minDist = Math.min(distLeft, distRight, distBottom, distTop);
+        let angleY = 0;
+
+        const offsetPos = -1;
+        let pos = new Vec3(0,0,0);
+
+        if (minDist === distTop) {
+            angleY = 0;
+            pos = new Vec3(0,0,offsetPos);
+        } else if (minDist === distRight) {
+            pos = new Vec3(-offsetPos,0,0);
+            angleY = -90;
+        } else if (minDist === distBottom) {
+            pos = new Vec3(0,0,-offsetPos);
+            angleY = 180;
+        } else if (minDist === distLeft) {
+            pos = new Vec3(offsetPos,0,0);
+            angleY = 90;
+        }
+
+        this.view.setRotationFromEuler(0, angleY, 0);
+        this.view.setPosition(pos);
     }
 }
