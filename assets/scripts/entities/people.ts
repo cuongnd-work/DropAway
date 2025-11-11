@@ -1,8 +1,7 @@
-﻿import {_decorator, Vec2, Node, SkeletalAnimation, Tween, Vec3} from 'cc';
+﻿import {_decorator, Node, SkeletalAnimation, Tween, Vec2} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
-import {ColorPreset} from "./base/colorPreset";
 import {PersonData} from "db://assets/scripts/level/level_data";
 import {Hole} from "db://assets/scripts/entities/hole";
 
@@ -36,31 +35,32 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         return false;
     }
 
-    private doCollectedAnimation(hole: Hole) {
+    public doCollectedAnimation(hole: Hole) {
         this.collider.active = false;
 
         const clip = this.skeletalAnim.clips[6];
         clip.wrapMode = 1;
-        const clipName = clip.name;
+        this.skeletalAnim.play(clip.name);
 
-        this.skeletalAnim.play(clipName);
-        
-        let currentPos = this.node.worldPosition;
-
-        this.node.setParent(hole.getDropPoint());
-        this.node.setWorldPosition(currentPos);
-        
-        const targetPos = new Vec3(0,0,0);
         const duration = 0.6;
+        const startPos = this.node.worldPosition.clone();
 
-        Tween.stopAllByTarget(this.node);
-        new Tween(this.node)
-            .parallel(
-                new Tween(this.node)
-                    .to(duration, { position: targetPos }, { easing: 'sineIn' }),
-                new Tween(this.node)
-                    .to(duration, { scale: new Vec3(0.6, 0.6, 0.6) }, { easing: 'sineIn' })
-            )
+        let elapsed = 0;
+        const tween = new Tween({t: 0})
+            .to(duration, {t: 1}, {
+                easing: 'sineIn',
+                onUpdate: (target) => {
+                    elapsed = target.t * duration;
+
+                    const currentTarget = hole.getDropPoint().worldPosition.clone();
+                    const newPos = startPos.lerp(currentTarget, target.t);
+
+                    this.node.position = newPos;
+
+                    const scale = 0.6 + (1 - 0.6) * (1 - target.t);
+                    this.node.setScale(scale, scale, scale);
+                }
+            })
             .call(() => {
                 this.node.active = false;
             })

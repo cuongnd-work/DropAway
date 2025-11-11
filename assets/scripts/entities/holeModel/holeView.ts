@@ -17,6 +17,9 @@ export class HoleView extends Component {
     @property(Node)
     public dropPoint: Node = null;
 
+    @property(Node)
+    public doors: Node[] = [];
+
     @property
     public maxPeopleInHole: number = 1;
 
@@ -36,6 +39,7 @@ export class HoleView extends Component {
     }
 
     beginDrag(): void {
+        if(this.hole.isComplete) return;
         if (this._currentTween) {
             this._currentTween.stop();
             this._currentTween = null;
@@ -43,11 +47,13 @@ export class HoleView extends Component {
     }
 
     drag(): void {
+        if(this.hole.isComplete) return;
         this.CheckFloorStep();
         this.CheckPeopleJump();
     }
 
     endDrag(): void {
+        if(this.hole.isComplete) return;
         if (!LevelManager.instance.floors || LevelManager.instance.floors.length === 0) return;
 
         const nodePos = this.node.worldPosition;
@@ -91,5 +97,23 @@ export class HoleView extends Component {
     }
 
     private CheckPeopleJump() {
+    }
+
+    public OnComplete() {
+        const tweenPromises = this.doors.map(door => {
+            return new Promise<void>(resolve => {
+                tween(door)
+                    .to(0.25, { scale: new Vec3(1, 1, 1) }, { easing: 'quadOut' })
+                    .call(() => resolve())
+                    .start();
+            });
+        });
+
+        Promise.all(tweenPromises).then(() => {
+            tween(this.node)
+                .to(0.25, { scale: new Vec3(0, 0, 0) }, { easing: 'quadIn' })
+                .call(() => this.node.active = false)
+                .start();
+        });
     }
 }
