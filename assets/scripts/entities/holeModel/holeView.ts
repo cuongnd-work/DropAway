@@ -29,6 +29,8 @@ export class HoleView extends Component {
 
     public bindData(data: Hole) {
         this.hole = data;
+        const current = this.node.eulerAngles;
+        this.node.setRotationFromEuler(0, current.y + this.hole.holeData.rotation * 90, 0);
     }
     
     public updateHitBoxCollider(vel : Vec3) : void{

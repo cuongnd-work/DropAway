@@ -91,7 +91,7 @@ export class LevelSpawner extends LifecycleComponent {
             for (let x = 0; x < width; x++) {
                 const key = `${x},${y}`;
                 const gridPos = new Vec2(x, y);
-                const worldPos = new Vec3(x - halfWidth, 0, y - halfHeight);
+                const worldPos = new Vec3(x - halfWidth, 0, -(y - halfHeight));
 
                 if (obstacleSet.has(key)) {
                     continue;
