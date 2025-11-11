@@ -4,6 +4,7 @@ import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
 import {PersonData} from "db://assets/scripts/level/level_data";
 import {Hole} from "db://assets/scripts/entities/hole";
+import {Elevator} from "db://assets/scripts/entities/elevator";
 
 const {ccclass, property} = _decorator;
 
@@ -20,8 +21,11 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     @property(SkeletalAnimation)
     private skeletalAnim: SkeletalAnimation = null!;
 
-    bindData(data: PersonData): void {
-        this.position = data.position;
+    private elevator: Elevator | null = null;
+
+    bindData(data: PersonData, elevator?: Elevator): void {
+        this.elevator = elevator;
+        if(!elevator) this.position = data.position;
         this.color = data.colorIndex;
     }
 
@@ -29,6 +33,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         if (!this.isCollected && hole.color == this.color) {
             this.doCollectedAnimation(hole);
             this.isCollected = true;
+            if(this.elevator) this.elevator.triggerPeopleComplete(this);
 
             return true;
         }
@@ -66,4 +71,6 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
             })
             .start();
     }
+
+
 }

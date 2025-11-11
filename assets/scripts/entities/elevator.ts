@@ -1,4 +1,4 @@
-﻿import {_decorator, math, Prefab, Node, Vec3} from 'cc';
+﻿import {_decorator, math, Prefab, Node, Vec3, tween} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {ElevatorData} from "db://assets/scripts/level/level_data";
@@ -22,7 +22,12 @@ export class Elevator extends LifecycleComponent implements IEntities {
     
     public peoples: People[] = [];
 
+    private peopleOffset: number = 1;
+
     public bindData(datas: ElevatorData, maxXGrid: number, maxYGrid: number) {
+
+        let offset = 0;
+
         for (let data of datas.people) {
             let people = object_pool_manager.instance.Spawn(
                 this.peoplePrefab,
@@ -31,8 +36,11 @@ export class Elevator extends LifecycleComponent implements IEntities {
                 this.root
             ).getComponent(People);
 
-            people.bindData(data);
+            people.bindData(data, this);
             this.peoples.push(people);
+            people.node.setPosition(0,0, -offset);
+            if(offset != 0) people.node.active = false;
+            offset += this.peopleOffset;
         }
 
         if (!this.view) return;
@@ -67,5 +75,23 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
         this.view.setRotationFromEuler(0, angleY, 0);
         this.view.setPosition(pos);
+    }
+
+    triggerPeopleComplete(people: People) {
+        const index = this.peoples.indexOf(people);
+        if (index === -1) return;
+
+        people.node.active = false;
+        this.peoples.splice(index, 1);
+
+        for (let i = index; i < this.peoples.length; i++) {
+            const p = this.peoples[i];
+            const targetPos = new Vec3(0, 0, -i * this.peopleOffset);
+            p.node.active = true;
+
+            tween(p.node)
+                .to(0.2, { position: targetPos }, { easing: 'quadOut' })
+                .start();
+        }
     }
 }
