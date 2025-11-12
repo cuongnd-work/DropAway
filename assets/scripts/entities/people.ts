@@ -1,4 +1,4 @@
-﻿import {_decorator, Collider, ICollisionEvent, SkeletalAnimation, Tween, Vec2} from 'cc';
+﻿import {_decorator, Collider, ICollisionEvent, SkeletalAnimation, Tween, Vec2, ITriggerEvent} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
@@ -29,43 +29,45 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
 
     bindData(data: PersonData, elevator?: Elevator): void {
         this.elevator = elevator;
-        if (!elevator) this.position = data.position;
+        if (!elevator) {
+            this.position = data.position;
+        } else {
+            this.hitCollider.node.active = false;
+            this.triggerCollider.node.active = false;
+        }
         this.color = data.colorIndex;
     }
 
     override onStart() {
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
         this.hitCollider.on('onCollisionExit', this._onHitExit, this);
-        this.triggerCollider.on('onCollisionEnter', this._onTriggerEnter, this);
-        this.triggerCollider.on('onCollisionExit', this._onTriggerExit, this);
+        this.triggerCollider.on('onTriggerEnter', this._onTriggerEnter, this);
+        this.triggerCollider.on('onTriggerExit', this._onTriggerExit, this);
     }
 
     onDisable() {
         this.hitCollider.off('onCollisionEnter', this._onHitEnter, this);
         this.hitCollider.off('onCollisionExit', this._onHitExit, this);
-        this.triggerCollider.off('onCollisionEnter', this._onTriggerEnter, this);
-        this.triggerCollider.off('onCollisionExit', this._onTriggerExit, this);
+        this.triggerCollider.off('onTriggerEnter', this._onTriggerEnter, this);
+        this.triggerCollider.off('onTriggerExit', this._onTriggerExit, this);
     }
 
     private _onHitEnter(event: ICollisionEvent) {
-        if (this.elevator) return;
+        console.log("Holeeeee");
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected && hole.color === this.color) {
-            if(this.elevator) this._onTriggerEnter(event);
             this.hitCollider.isTrigger = true;
         }
     }
 
     private _onHitExit(event: ICollisionEvent) {
-        if (this.elevator) return;
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
             this.hitCollider.isTrigger = false;
         }
     }
 
-    private _onTriggerEnter(event: ICollisionEvent) {
-        if (this.elevator) return;
+    private _onTriggerEnter(event: ITriggerEvent) {
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
             this.collect(hole);
@@ -81,8 +83,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         return false;
     }
 
-    private _onTriggerExit(event: ICollisionEvent) {
-        if (this.elevator) return;
+    private _onTriggerExit(event: ITriggerEvent) {
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
         }

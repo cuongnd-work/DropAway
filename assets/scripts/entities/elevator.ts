@@ -113,7 +113,7 @@ export class Elevator extends LifecycleComponent implements IEntities {
     }
 
     private async onCollect(hole: Hole){
-        if(this.peoples.length == 0) return;
+        if(this.peoples.length == 0 || !this.isMoving) return;
         if(this.peoples[0].collect(hole)){
             await new Promise<void>(resolve => setTimeout(resolve, 400));
             this.onCollect(hole);
@@ -122,6 +122,7 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
     override onDisable(){
         this.hit_collider.off('onTriggerEnter', this.onTriggerEnter, this);
+        this.hit_collider.off('onTriggerExit', this.onTriggerExit, this);
     }
 
     private onTriggerExit() {
