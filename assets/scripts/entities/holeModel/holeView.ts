@@ -1,8 +1,9 @@
-import {_decorator, Component, Tween, Vec3, Node, tween, Collider} from 'cc';
+import {_decorator, Component, Tween, Vec3, Node, tween, MeshRenderer} from 'cc';
 import {Hole} from "db://assets/scripts/entities/hole";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {constant} from "db://assets/configs/constant";
+import {MaterialManager} from "db://assets/scripts/level/material_manager";
 
 const {ccclass, property} = _decorator;
 
@@ -23,6 +24,9 @@ export class HoleView extends Component {
     @property(Node)
     public doors: Node[] = [];
 
+    @property([MeshRenderer])
+    private meshRenderers: MeshRenderer[] = [];
+
     @property
     public maxPeopleInHole: number = 1;
 
@@ -35,6 +39,19 @@ export class HoleView extends Component {
         const current = this.node.eulerAngles;
         this.node.setRotationFromEuler(0, current.y + this.hole.holeData.rotation * 90, 0);
         this.out_line.active = false;
+
+        if (!this.meshRenderers || this.meshRenderers.length === 0) {
+            console.warn('No MeshRenderers assigned!');
+            return;
+        }
+
+        for (const mesh of this.meshRenderers) {
+            if (mesh.materials && mesh.materials.length > 0) {
+                const mats = mesh.materials;
+                mats[0] = MaterialManager.instance.getHoleMaterial(data.color);
+                mesh.materials = mats;
+            }
+        }
     }
     
     public updateHitBoxCollider(vel : Vec3) : void{

@@ -1,10 +1,21 @@
-﻿import {_decorator, Collider, ICollisionEvent, SkeletalAnimation, Tween, Vec2, ITriggerEvent, Node} from 'cc';
+﻿import {
+    _decorator,
+    Collider,
+    ICollisionEvent,
+    ITriggerEvent,
+    MeshRenderer,
+    Node,
+    SkeletalAnimation,
+    Tween,
+    Vec2
+} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
 import {PersonData} from "db://assets/scripts/level/level_data";
 import {Hole} from "db://assets/scripts/entities/hole";
 import {Elevator} from "db://assets/scripts/entities/elevator";
+import {MaterialManager} from "db://assets/scripts/level/material_manager";
 
 const { ccclass, property } = _decorator;
 
@@ -12,6 +23,9 @@ const { ccclass, property } = _decorator;
 export class People extends LifecycleComponent implements IEntities, IHasColor {
     color: number;
     position: Vec2;
+
+    @property(MeshRenderer)
+    private meshRenderer: MeshRenderer | null = null;
 
     public isCollected: boolean = false;
 
@@ -36,6 +50,17 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
             this.triggerCollider.node.active = false;
         }
         this.color = data.colorIndex;
+
+        const materials = this.meshRenderer.materials;
+
+        if (materials.length === 0) {
+            console.warn('MeshRenderer has no materials!');
+            return;
+        }
+
+        materials[0] = MaterialManager.instance.getPeopleMaterial(this.color);
+
+        this.meshRenderer.materials = materials;
 
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
         this.hitCollider.on('onCollisionExit', this._onHitExit, this);
