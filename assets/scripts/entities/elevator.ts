@@ -40,11 +40,12 @@ export class Elevator extends LifecycleComponent implements IEntities {
                 this.root
             ).getComponent(People);
 
-            people.bindData(data, this);
             this.peoples.push(people);
             people.node.setPosition(0,0, -offset);
             if(offset != 0) people.node.active = false;
             offset += this.peopleOffset;
+
+            people.bindData(data, this);
         }
 
         if (!this.view) return;
@@ -88,7 +89,6 @@ export class Elevator extends LifecycleComponent implements IEntities {
         const index = this.peoples.indexOf(people);
         if (index === -1) return;
 
-        people.node.active = false;
         this.peoples.splice(index, 1);
 
         for (let i = index; i < this.peoples.length; i++) {
