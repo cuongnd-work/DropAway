@@ -58,9 +58,9 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
             return;
         }
 
-        materials[0] = MaterialManager.instance.getPeopleMaterial(this.color);
+        const newMat = MaterialManager.instance.getPeopleMaterial(this.color);
 
-        this.meshRenderer.materials = materials;
+        this.meshRenderer.setMaterial(newMat, 0);
 
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
         this.hitCollider.on('onCollisionExit', this._onHitExit, this);

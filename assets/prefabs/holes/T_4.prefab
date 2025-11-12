@@ -1230,6 +1230,9 @@
     "id": "3",
     "hit_box": null,
     "dropPoint": null,
+    "out_line": null,
+    "doors": [],
+    "meshRenderers": [],
     "maxPeopleInHole": 1,
     "_id": ""
   },
