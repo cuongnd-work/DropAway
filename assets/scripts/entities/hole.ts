@@ -37,16 +37,16 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     private _slotMax: number = 0;
 
     private onCollisionEnter(event: ICollisionEvent) {
-        if(this.isComplete) return;
-        let people = event.otherCollider.node.parent.getComponent(People);
-        if (people) {
-            if (people.tryCollect(this)) {
-                this.tryCompleteHole();
-            }
-        }
+        // if(this.isComplete) return;
+        // let people = event.otherCollider.node.parent.getComponent(People);
+        // if (people) {
+        //     if (people.tryCollect(this)) {
+        //         this.tryCompleteHole();
+        //     }
+        // }
     }
 
-    private tryCompleteHole(): void {
+    public tryCompleteHole(): void {
         this._slotContain++;
         if (this._slotContain >= this._slotMax){
             this.completeHole();
