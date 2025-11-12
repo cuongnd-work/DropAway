@@ -18,6 +18,9 @@ export class HoleView extends Component {
     public dropPoint: Node = null;
 
     @property(Node)
+    public out_line: Node = null;
+
+    @property(Node)
     public doors: Node[] = [];
 
     @property
@@ -31,6 +34,7 @@ export class HoleView extends Component {
         this.hole = data;
         const current = this.node.eulerAngles;
         this.node.setRotationFromEuler(0, current.y + this.hole.holeData.rotation * 90, 0);
+        this.out_line.active = false;
     }
     
     public updateHitBoxCollider(vel : Vec3) : void{
@@ -46,6 +50,7 @@ export class HoleView extends Component {
             this._currentTween.stop();
             this._currentTween = null;
         }
+        this.out_line.active = true;
     }
 
     drag(): void {
@@ -56,6 +61,8 @@ export class HoleView extends Component {
 
     endDrag(): void {
         if(this.hole.isComplete) return;
+        this.out_line.active = false;
+
         if (!LevelManager.instance.floors || LevelManager.instance.floors.length === 0) return;
 
         const nodePos = this.node.worldPosition;
