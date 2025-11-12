@@ -1053,7 +1053,10 @@
       "__id__": 40
     },
     "_materials": [
-      null
+      {
+        "__uuid__": "6203d78f-8908-46ba-a384-a839a99fb81a",
+        "__expectedType__": "cc.Material"
+      }
     ],
     "_visFlags": 0,
     "bakeSettings": {
