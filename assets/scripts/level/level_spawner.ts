@@ -121,7 +121,7 @@ export class LevelSpawner extends LifecycleComponent {
                     if (peopleData) {
                         const people = spawnEntity<People>(this.peoplePrefab, worldPos, gridPos, parentNode);
                         if (people) {
-                            people.bindData(peopleData, false);
+                            people.bindData(peopleData, null);
 
                             if (!entitiesMaps.has(key)) {
                                 entitiesMaps.set(key, []);
