@@ -1,9 +1,10 @@
-﻿import {_decorator, math, Prefab, Node, Vec3, tween} from 'cc';
+﻿import {_decorator, Collider, ITriggerEvent, math, Node, Prefab, tween, Vec3} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {ElevatorData} from "db://assets/scripts/level/level_data";
 import {People} from "db://assets/scripts/entities/people";
 import {object_pool_manager} from "db://assets/plugins/playable-foundation/game-foundation/object_pool";
+import {Hole} from "db://assets/scripts/entities/hole";
 
 const {ccclass, property} = _decorator;
 
@@ -19,6 +20,9 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
     @property(Node)
     private view: Node = null;
+
+    @property(Collider)
+    private hit_collider: Collider = null;
     
     public peoples: People[] = [];
 
@@ -75,6 +79,9 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
         this.view.setRotationFromEuler(0, angleY, 0);
         this.view.setPosition(pos);
+
+        this.hit_collider.on('onTriggerEnter', this.onTriggerEnter, this);
+        this.hit_collider.on('onTriggerExit', this.onTriggerExit, this);
     }
 
     triggerPeopleComplete(people: People) {
@@ -93,5 +100,31 @@ export class Elevator extends LifecycleComponent implements IEntities {
                 .to(0.2, { position: targetPos }, { easing: 'quadOut' })
                 .start();
         }
+    }
+
+    private isMoving: boolean = false;
+
+    private async onTriggerEnter(event: ITriggerEvent) {
+        let hole = event.otherCollider.node.parent.parent.getComponent(Hole);
+        if (hole) {
+            this.isMoving = true;
+            this.onCollect(hole);
+        }
+    }
+
+    private async onCollect(hole: Hole){
+        if(this.peoples.length == 0) return;
+        if(this.peoples[0].collect(hole)){
+            await new Promise<void>(resolve => setTimeout(resolve, 400));
+            this.onCollect(hole);
+        }
+    }
+
+    override onDisable(){
+        this.hit_collider.off('onTriggerEnter', this.onTriggerEnter, this);
+    }
+
+    private onTriggerExit() {
+        this.isMoving = false;
     }
 }

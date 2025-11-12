@@ -48,6 +48,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     private _onHitEnter(event: ICollisionEvent) {
+        if (this.elevator) return;
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected && hole.color === this.color) {
             if(this.elevator) this._onTriggerEnter(event);
@@ -56,6 +57,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     private _onHitExit(event: ICollisionEvent) {
+        if (this.elevator) return;
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
             this.hitCollider.isTrigger = false;
@@ -63,15 +65,24 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     private _onTriggerEnter(event: ICollisionEvent) {
+        if (this.elevator) return;
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
-            if(this.tryCollect(hole)){
-                hole.tryCompleteHole();
-            }
+            this.collect(hole);
         }
     }
 
+    public collect(hole: Hole): boolean {
+        if(this.tryCollect(hole)){
+            hole.tryCompleteHole();
+            return true;
+        }
+
+        return false;
+    }
+
     private _onTriggerExit(event: ICollisionEvent) {
+        if (this.elevator) return;
         const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
         if (hole && !this.isCollected) {
         }

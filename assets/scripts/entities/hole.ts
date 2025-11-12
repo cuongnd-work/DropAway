@@ -1,4 +1,4 @@
-﻿import {_decorator, Collider, ICollisionEvent, Node, Prefab, RigidBody, Vec2, Vec3} from 'cc';
+﻿import {_decorator, Collider, ITriggerEvent, Node, Prefab, RigidBody, Vec2, Vec3} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
@@ -9,6 +9,7 @@ import {HoleView} from "db://assets/scripts/entities/holeModel/holeView";
 import {constant} from "db://assets/configs/constant";
 import {People} from "db://assets/scripts/entities/people";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
+import {Elevator} from "db://assets/scripts/entities/elevator";
 
 const {ccclass, property} = _decorator;
 
@@ -35,16 +36,6 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
     private _slotContain: number = 0;
     private _slotMax: number = 0;
-
-    private onCollisionEnter(event: ICollisionEvent) {
-        // if(this.isComplete) return;
-        // let people = event.otherCollider.node.parent.getComponent(People);
-        // if (people) {
-        //     if (people.tryCollect(this)) {
-        //         this.tryCompleteHole();
-        //     }
-        // }
-    }
 
     public tryCompleteHole(): void {
         this._slotContain++;
@@ -99,9 +90,15 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         Vec3.subtract(vel, next, current);
         vel.multiplyScalar(1 / dt);
 
+        const maxSpeed = 20;
+        if (vel.length() > maxSpeed) {
+            vel.normalize().multiplyScalar(maxSpeed);
+        }
+
         this._rb.setLinearVelocity(vel);
         this.holeView.updateHitBoxCollider(vel);
     }
+
 
     public bindData(data: HoleData): void {
         this.holeData = data;
@@ -121,18 +118,6 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
         this.holeView.node.setPosition(this.node.position.x, 0, this.node.position.z);
         this.node.setPosition(0, constant.GAME_PLAY.HOLE_OFFSET, 0);
-
-        const collider = this.holeView.getComponent(Collider);
-        if (collider) {
-            collider.on('onCollisionEnter', this.onCollisionEnter, this);
-        }
-    }
-
-    protected onDispose() {
-        const collider = this.holeView.getComponent(Collider);
-        if (collider) {
-            collider.off('onCollisionEnter', this.onCollisionEnter, this);
-        }
     }
 
     private spawnModel(data: HoleData) {
