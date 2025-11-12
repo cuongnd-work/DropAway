@@ -1,4 +1,4 @@
-﻿import {_decorator, Collider, ICollisionEvent, SkeletalAnimation, Tween, Vec2, ITriggerEvent} from 'cc';
+﻿import {_decorator, Collider, ICollisionEvent, SkeletalAnimation, Tween, Vec2, ITriggerEvent, Node} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {IHasColor} from "db://assets/scripts/entities/base/IHasColor";
@@ -36,9 +36,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
             this.triggerCollider.node.active = false;
         }
         this.color = data.colorIndex;
-    }
 
-    override onStart() {
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
         this.hitCollider.on('onCollisionExit', this._onHitExit, this);
         this.triggerCollider.on('onTriggerEnter', this._onTriggerEnter, this);
@@ -53,22 +51,21 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     private _onHitEnter(event: ICollisionEvent) {
-        console.log("Holeeeee");
-        const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
+        const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected && hole.color === this.color) {
             this.hitCollider.isTrigger = true;
         }
     }
 
     private _onHitExit(event: ICollisionEvent) {
-        const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
+        const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected) {
             this.hitCollider.isTrigger = false;
         }
     }
 
     private _onTriggerEnter(event: ITriggerEvent) {
-        const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
+        const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected) {
             this.collect(hole);
         }
@@ -84,9 +81,13 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     private _onTriggerExit(event: ITriggerEvent) {
-        const hole = event.otherCollider.node.parent.parent.getComponent(Hole);
+        const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected) {
         }
+    }
+
+    private static _getHole(node: Node) : Hole{
+        return node.parent.parent.getComponent(Hole);
     }
 
     public tryCollect(hole: Hole): boolean {

@@ -892,7 +892,7 @@
       "y": 1,
       "z": 0
     },
-    "_radius": 0.433,
+    "_radius": 0.399,
     "_cylinderHeight": 1.077,
     "_direction": 1,
     "_id": ""
@@ -976,7 +976,7 @@
       "__type__": "cc.Vec3",
       "x": -0.034,
       "y": 0,
-      "z": -0.149
+      "z": -0.06
     },
     "_lrot": {
       "__type__": "cc.Quat",

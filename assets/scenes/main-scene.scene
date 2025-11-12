@@ -186,7 +186,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 10,
-      "z": 0
+      "z": 2
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -378,7 +378,7 @@
       "__id__": 9
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 11
@@ -400,15 +400,15 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 2,
+      "y": 2,
+      "z": 2
     },
     "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": 89.99999999999999,
+      "x": 90,
       "y": 0,
       "z": 0
     },
