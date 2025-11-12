@@ -113,7 +113,7 @@ export class Elevator extends LifecycleComponent implements IEntities {
     }
 
     private async onCollect(hole: Hole){
-        if(this.peoples.length == 0 || !this.isMoving) return;
+        if(this.peoples.length == 0 || !this.isMoving || hole.isComplete) return;
         if(this.peoples[0].collect(hole)){
             await new Promise<void>(resolve => setTimeout(resolve, 400));
             this.onCollect(hole);
