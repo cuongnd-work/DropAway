@@ -1,5 +1,5 @@
 import { _decorator, Material } from 'cc';
-import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
+import { LifecycleComponent } from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 const { ccclass, property } = _decorator;
 
 @ccclass('MaterialManager')
@@ -21,35 +21,45 @@ export class MaterialManager extends LifecycleComponent {
     @property([Material])
     peopleMaterials: Material[] = [];
 
-    private holeMaterialMap: Map<number, Material> = new Map();
+    private materialMap: Map<number, { hole: Material, people: Material }> = new Map();
 
-    private peopleMaterialMap: Map<number, Material> = new Map();
-
+    /**
+     * Lấy vật liệu Hole theo key
+     */
     public getHoleMaterial(key: number): Material | null {
-        if (this.holeMaterialMap.has(key)) {
-            return this.holeMaterialMap.get(key)!;
-        }
-        if (this.holeMaterials.length === 0) {
-            console.warn('No hole materials assigned');
-            return null;
-        }
-        const randomIndex = Math.floor(Math.random() * this.holeMaterials.length);
-        const mat = this.holeMaterials[randomIndex];
-        this.holeMaterialMap.set(key, mat);
-        return mat;
+        const entry = this.getMaterialEntry(key);
+        return entry ? entry.hole : null;
     }
 
+    /**
+     * Lấy vật liệu People theo key
+     */
     public getPeopleMaterial(key: number): Material | null {
-        if (this.peopleMaterialMap.has(key)) {
-            return this.peopleMaterialMap.get(key)!;
+        const entry = this.getMaterialEntry(key);
+        return entry ? entry.people : null;
+    }
+
+    /**
+     * Lấy entry vật liệu đồng bộ theo key
+     */
+    private getMaterialEntry(key: number): { hole: Material, people: Material } | null {
+        if (this.materialMap.has(key)) {
+            return this.materialMap.get(key)!;
         }
-        if (this.peopleMaterials.length === 0) {
-            console.warn('No people materials assigned');
+
+        if (this.holeMaterials.length === 0 || this.peopleMaterials.length === 0) {
+            console.warn('No hole or people materials assigned');
             return null;
         }
-        const randomIndex = Math.floor(Math.random() * this.peopleMaterials.length);
-        const mat = this.peopleMaterials[randomIndex];
-        this.peopleMaterialMap.set(key, mat);
-        return mat;
+
+        // Đồng bộ: key % length để không vượt quá mảng
+        const index = key % Math.min(this.holeMaterials.length, this.peopleMaterials.length);
+
+        const entry = {
+            hole: this.holeMaterials[index],
+            people: this.peopleMaterials[index]
+        };
+        this.materialMap.set(key, entry);
+        return entry;
     }
 }
