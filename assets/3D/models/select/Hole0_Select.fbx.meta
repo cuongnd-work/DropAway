@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "7e1db22e-1c7e-47ba-957c-7420f7ba4e88",
+  "files": [],
+  "subMetas": {
+    "8ddc3": {
+      "importer": "gltf-mesh",
+      "uuid": "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@8ddc3",
+      "displayName": "",
+      "id": "8ddc3",
+      "name": "Hole0_Select.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 66
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "316ce": {
+      "importer": "gltf-scene",
+      "uuid": "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@316ce",
+      "displayName": "",
+      "id": "316ce",
+      "name": "Hole0_Select.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@8ddc3"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@55b43"
+      ],
+      "scenes": [
+        "7e1db22e-1c7e-47ba-957c-7420f7ba4e88@316ce"
+      ]
+    }
+  }
+}

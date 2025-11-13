@@ -1,0 +1,42 @@
+CCEffect %{
+  techniques:
+  - name: transparent
+    passes:
+    - vert: legacy/main-functions/general-vs:vert
+      frag: unlit-texture-fs:frag
+      rasterizerState:
+        cullMode: back
+        priority: 2000         # render sau DepthMask
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+      depthStencilState:
+        depthTest: true
+        depthWrite: false       # không ghi depth
+      properties:
+        mainTexture: { value: white }
+        mainColor:   { value: [1, 1, 1, 1], editor: { type: color } }
+%}
+
+CCProgram unlit-texture-fs %{
+  precision highp float;
+  #include <legacy/output>
+  #include <legacy/fog-fs>
+
+  in vec2 v_uv;
+  in vec3 v_position;
+
+  uniform sampler2D mainTexture;
+
+  layout(set = 2, binding = 0) uniform UBO {
+      vec4 mainColor;
+  };
+
+  vec4 frag() {
+      vec4 col = mainColor * texture(mainTexture, v_uv);
+      CC_APPLY_FOG(col, v_position);  // optional: fog support
+      return CCFragOutput(col);
+  }
+}%

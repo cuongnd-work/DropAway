@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "802cab19-8dfc-4069-a04a-7133c520b32d",
+  "files": [],
+  "subMetas": {
+    "36c11": {
+      "importer": "gltf-mesh",
+      "uuid": "802cab19-8dfc-4069-a04a-7133c520b32d@36c11",
+      "displayName": "",
+      "id": "36c11",
+      "name": "Hole1_Select.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 66
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "802cab19-8dfc-4069-a04a-7133c520b32d@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1a8ef": {
+      "importer": "gltf-scene",
+      "uuid": "802cab19-8dfc-4069-a04a-7133c520b32d@1a8ef",
+      "displayName": "",
+      "id": "1a8ef",
+      "name": "Hole1_Select.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "802cab19-8dfc-4069-a04a-7133c520b32d@36c11"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "802cab19-8dfc-4069-a04a-7133c520b32d@55b43"
+      ],
+      "scenes": [
+        "802cab19-8dfc-4069-a04a-7133c520b32d@1a8ef"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+CCEffect %{
+  techniques:
+  - name: depthmask
+    passes:
+    - vert: legacy/main-functions/general-vs:vert
+      frag: depthmask-fs:frag
+      rasterizerState:
+        cullMode: none          # render cả 2 mặt
+        priority: 1000          # render trước Transparent
+        colorWriteMask: none    # KHÔNG ghi màu
+      depthStencilState:
+        depthTest: true
+        depthWrite: true         # ghi depth
+      blendState:
+        targets:
+        - blend: false
+%}
+
+CCProgram depthmask-fs %{
+  precision highp float;
+  #include <legacy/output>
+
+  in vec3 v_position;
+
+  vec4 frag() {
+      discard;             // không render màu
+      return vec4(0.0);    // giá trị trả về không quan trọng
+  }
+}%

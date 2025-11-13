@@ -1,0 +1,171 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "246db513-2707-49a6-aba5-a148dcd71a9d",
+  "files": [],
+  "subMetas": {
+    "06b91": {
+      "importer": "gltf-mesh",
+      "uuid": "246db513-2707-49a6-aba5-a148dcd71a9d@06b91",
+      "displayName": "",
+      "id": "06b91",
+      "name": "Hole4_Select.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 234
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "246db513-2707-49a6-aba5-a148dcd71a9d@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6822f": {
+      "importer": "gltf-scene",
+      "uuid": "246db513-2707-49a6-aba5-a148dcd71a9d@6822f",
+      "displayName": "",
+      "id": "6822f",
+      "name": "Hole4_Select.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "246db513-2707-49a6-aba5-a148dcd71a9d@06b91"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "246db513-2707-49a6-aba5-a148dcd71a9d@55b43"
+      ],
+      "scenes": [
+        "246db513-2707-49a6-aba5-a148dcd71a9d@6822f"
+      ]
+    },
+    "materials": {
+      "246db513-2707-49a6-aba5-a148dcd71a9d@55b43": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 1,
+        "_defines": [
+          {
+            "DCC_APP_NAME": 5
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            },
+            "transparencyFactor": 0.589
+          },
+          {},
+          {},
+          {}
+        ]
+      }
+    }
+  }
+}

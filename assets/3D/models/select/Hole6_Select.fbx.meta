@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77",
+  "files": [],
+  "subMetas": {
+    "c1ea2": {
+      "importer": "gltf-mesh",
+      "uuid": "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@c1ea2",
+      "displayName": "",
+      "id": "c1ea2",
+      "name": "Hole6_Select.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 116
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "67bb2": {
+      "importer": "gltf-scene",
+      "uuid": "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@67bb2",
+      "displayName": "",
+      "id": "67bb2",
+      "name": "Hole6_Select.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@c1ea2"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@55b43"
+      ],
+      "scenes": [
+        "be6a220c-ec05-4bf5-a8f2-a63c6ec17a77@67bb2"
+      ]
+    }
+  }
+}

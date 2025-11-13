@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "46e1487f-5c79-4398-aabc-9493ebb38ae1",
+  "files": [],
+  "subMetas": {
+    "af051": {
+      "importer": "gltf-mesh",
+      "uuid": "46e1487f-5c79-4398-aabc-9493ebb38ae1@af051",
+      "displayName": "",
+      "id": "af051",
+      "name": "Hole2_Select.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 66
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "46e1487f-5c79-4398-aabc-9493ebb38ae1@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "51d31": {
+      "importer": "gltf-scene",
+      "uuid": "46e1487f-5c79-4398-aabc-9493ebb38ae1@51d31",
+      "displayName": "",
+      "id": "51d31",
+      "name": "Hole2_Select.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "46e1487f-5c79-4398-aabc-9493ebb38ae1@af051"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "46e1487f-5c79-4398-aabc-9493ebb38ae1@55b43"
+      ],
+      "scenes": [
+        "46e1487f-5c79-4398-aabc-9493ebb38ae1@51d31"
+      ]
+    }
+  }
+}
