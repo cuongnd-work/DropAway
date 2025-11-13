@@ -50,7 +50,7 @@ export class HoleView extends Component {
 
         for (const mesh of this.meshRenderers) {
             if (mesh.materials && mesh.materials.length > 0) {
-                const newMat = MaterialManager.instance.getHoleMaterial(data.color);
+                const newMat = MaterialManager.instance.getPeopleMaterial(data.color);
                 mesh.setMaterial(newMat, 0);
             }
         }

@@ -711,43 +711,43 @@
     "__prefab": null,
     "holeMaterials": [
       {
-        "__uuid__": "e735da59-9dce-4db7-ba20-8ce8888d34d8",
+        "__uuid__": "9284c77d-0cb0-4991-86c7-94ca0c902a85",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "38c8f766-f205-44e8-9ee7-ff67b8376149",
+        "__uuid__": "6a482c4b-683d-49d4-86c9-fc39730ecb43",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "fc9a969b-377e-4350-b0cf-364ae0d4165f",
+        "__uuid__": "5a7aa79e-586a-4978-b71d-a58ea2ffc218",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "279234d3-08ab-4a25-b4c0-42ee118a51f8",
+        "__uuid__": "a97a4a7c-c64b-4973-87b4-cf788a33b1b2",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "7aa1d94e-fd18-4dc9-9657-fcecc7db09cd",
+        "__uuid__": "2a1791cd-1a40-4e4c-84c6-35e8ddd2e7fd",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "4fa3938b-abfa-4eca-9b5f-10d48b27747a",
+        "__uuid__": "91b6e181-e58e-4d05-8fa5-0a22ff8213ba",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "57b3de23-b063-4bf0-b3a5-6a86064d6a20",
+        "__uuid__": "c4d47683-79f7-410b-a971-8f063193cbf0",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "1d0e6c61-7d17-4a0d-b0fc-5db1a57c2d52",
+        "__uuid__": "b024abaf-949c-4986-893c-029a241bb4e9",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "94561057-bc69-4eeb-8e10-43b4693dc6c0",
+        "__uuid__": "16ce7542-66c1-416d-b476-05d66d7be051",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "de5d25ce-d7a1-4ce0-9fbf-5c97b71fb481",
+        "__uuid__": "e4414d96-843c-4aee-9910-e23f7d10fd1a",
         "__expectedType__": "cc.Material"
       }
     ],
