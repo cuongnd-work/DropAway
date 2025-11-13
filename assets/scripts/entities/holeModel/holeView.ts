@@ -1,4 +1,4 @@
-import {_decorator, Component, Tween, Vec3, Node, tween, MeshRenderer} from 'cc';
+import {_decorator, Component, Tween, Vec3, Node, tween, MeshRenderer, Label} from 'cc';
 import {Hole} from "db://assets/scripts/entities/hole";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {Floor} from "db://assets/scripts/entities/floor";
@@ -20,6 +20,9 @@ export class HoleView extends Component {
 
     @property(Node)
     public out_line: Node = null;
+
+    @property(Label)
+    public text: Label = null;
 
     @property(Node)
     public doors: Node[] = [];
@@ -51,6 +54,8 @@ export class HoleView extends Component {
                 mesh.setMaterial(newMat, 0);
             }
         }
+
+        this.setText(this.maxPeopleInHole);
     }
     
     public updateHitBoxCollider(vel : Vec3) : void{
@@ -140,5 +145,9 @@ export class HoleView extends Component {
                 .call(() => this.node.active = false)
                 .start();
         });
+    }
+
+    setText(number: number) {
+        this.text.string = number.toString();
     }
 }

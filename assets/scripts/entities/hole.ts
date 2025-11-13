@@ -27,7 +27,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     private _rb: RigidBody | null = null;
     private _targetPos = new Vec3();
     private _dragging = false;
-    
+
     public isComplete: boolean = false;
     public holeView: HoleView = null;
     public holeData: HoleData = null;
@@ -39,7 +39,8 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
     public tryCompleteHole(): void {
         this._slotContain++;
-        if (this._slotContain >= this._slotMax){
+        this.holeView.setText(this._slotMax - this._slotContain)
+        if (this._slotContain >= this._slotMax) {
             this.completeHole();
             LevelManager.instance.checkLevelCompleted();
         }
@@ -54,7 +55,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     }
 
     beginDrag(): void {
-        if(this.isComplete) return;
+        if (this.isComplete) return;
         this._dragging = true;
         this._targetPos.set(this.holeView.node.worldPosition);
         this._rb.wakeUp();
@@ -63,14 +64,14 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
     }
 
     drag(worldPos: Vec3): void {
-        if(this.isComplete) return;
+        if (this.isComplete) return;
         if (!this._dragging) return;
         this._targetPos.set(worldPos.x, this.holeView.node.worldPosition.y, worldPos.z);
         this.holeView.drag();
     }
 
     endDrag(): void {
-        if(this.isComplete) return;
+        if (this.isComplete) return;
         if (!this._rb) return;
         this._dragging = false;
         this._rb.setLinearVelocity(Vec3.ZERO);
