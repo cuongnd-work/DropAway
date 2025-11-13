@@ -753,35 +753,7 @@
     ],
     "peopleMaterials": [
       {
-        "__uuid__": "97a6c1a0-c41e-4197-9396-0a2350eca711",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "721aae06-16b9-461c-a39c-57090462b604",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "b6b6ee2c-491d-44ed-ad80-4f8a09a15d57",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "7bb1a65c-bb0c-4b8a-a17c-d077e9cf7f00",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "b50630ce-8f39-42bf-a441-78a352b804c8",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "75c8a373-7033-4c8c-a692-8eb726e79ba1",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "545a4547-5f83-4df3-a339-aa52f42742c5",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "153e1c22-8899-4137-ab0f-05068abe1ef4",
+        "__uuid__": "b87fe47a-86dd-4eb8-9a6b-e288265cac8c",
         "__expectedType__": "cc.Material"
       },
       {
@@ -789,7 +761,35 @@
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "b87fe47a-86dd-4eb8-9a6b-e288265cac8c",
+        "__uuid__": "153e1c22-8899-4137-ab0f-05068abe1ef4",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "545a4547-5f83-4df3-a339-aa52f42742c5",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "75c8a373-7033-4c8c-a692-8eb726e79ba1",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "b50630ce-8f39-42bf-a441-78a352b804c8",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "7bb1a65c-bb0c-4b8a-a17c-d077e9cf7f00",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "b6b6ee2c-491d-44ed-ad80-4f8a09a15d57",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "721aae06-16b9-461c-a39c-57090462b604",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "97a6c1a0-c41e-4197-9396-0a2350eca711",
         "__expectedType__": "cc.Material"
       }
     ],
