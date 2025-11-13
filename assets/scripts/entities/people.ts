@@ -63,7 +63,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         this.meshRenderer.setMaterial(newMat, 0);
 
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
-        this.hitCollider.on('onCollisionExit', this._onHitExit, this);
+        this.hitCollider.on('onTriggerExit', this._onHitExit, this);
         this.triggerCollider.on('onTriggerEnter', this._onTriggerEnter, this);
         this.triggerCollider.on('onTriggerExit', this._onTriggerExit, this);
     }
@@ -82,7 +82,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         }
     }
 
-    private _onHitExit(event: ICollisionEvent) {
+    private _onHitExit(event: ITriggerEvent) {
         const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected) {
             this.hitCollider.isTrigger = false;
