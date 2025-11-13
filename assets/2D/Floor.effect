@@ -15,6 +15,7 @@ CCEffect %{
       depthStencilState:
         depthTest: true
         depthWrite: false       # không ghi depth
+        depthFunc: less         # chỉ render khi depth < depth buffer
       properties:
         mainTexture: { value: white }
         mainColor:   { value: [1, 1, 1, 1], editor: { type: color } }

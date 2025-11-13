@@ -6,14 +6,16 @@ CCEffect %{
       frag: depthmask-fs:frag
       rasterizerState:
         cullMode: none          # render cả 2 mặt
-        priority: 1000          # render trước Transparent
-        colorWriteMask: none    # KHÔNG ghi màu
+        priority: 1000          # render trước Floor
       depthStencilState:
         depthTest: true
         depthWrite: true         # ghi depth
+        depthFunc: less          # depth nhỏ hơn thì pass
       blendState:
         targets:
-        - blend: false
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
 %}
 
 CCProgram depthmask-fs %{
@@ -23,7 +25,6 @@ CCProgram depthmask-fs %{
   in vec3 v_position;
 
   vec4 frag() {
-      discard;             // không render màu
-      return vec4(0.0);    // giá trị trả về không quan trọng
+      return CCFragOutput(vec4(0.0, 0.0, 0.0, 0.0));    // trong suốt hoàn toàn
   }
 }%
