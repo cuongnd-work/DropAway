@@ -1,4 +1,4 @@
-﻿import {_decorator, Collider, ITriggerEvent, math, Node, Prefab, tween, Vec3} from 'cc';
+﻿import {_decorator, Collider, ITriggerEvent, math, Node, Prefab, tween, Vec3, Label} from 'cc';
 import {LifecycleComponent} from "db://assets/plugins/playable-foundation/game-foundation/lifecycle_manager";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import {ElevatorData} from "db://assets/scripts/level/level_data";
@@ -17,6 +17,9 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
     @property(Node)
     private root: Node = null;
+
+    @property(Label)
+    private text: Label = null;
 
     @property(Node)
     private view: Node = null;
@@ -83,9 +86,13 @@ export class Elevator extends LifecycleComponent implements IEntities {
 
         this.hit_collider.on('onTriggerEnter', this.onTriggerEnter, this);
         this.hit_collider.on('onTriggerExit', this.onTriggerExit, this);
+
+        this.text.string = datas.people.length.toString();
     }
 
     triggerPeopleComplete(people: People) {
+        this.text.string = (this.peoples.length - 1).toString();
+
         const index = this.peoples.indexOf(people);
         if (index === -1) return;
 
