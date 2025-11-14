@@ -1115,6 +1115,9 @@
     "meshRenderer": {
       "__id__": 91
     },
+    "model": {
+      "__id__": 2
+    },
     "hitCollider": {
       "__id__": 78
     },

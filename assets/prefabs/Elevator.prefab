@@ -144,7 +144,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -0.45
+      "z": -0.308
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -933,6 +933,58 @@
     "hit_collider": {
       "__id__": 29
     },
+    "root_position_offset": [
+      {
+        "__type__": "cc.Vec3",
+        "x": 0,
+        "y": 0.65,
+        "z": 0.6
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": -0.066,
+        "y": 0.287,
+        "z": 0.429
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": 0.066,
+        "y": 0.287,
+        "z": 0.429
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": 0,
+        "y": 0.41,
+        "z": 0.6
+      }
+    ],
+    "root_rotation_offset": [
+      {
+        "__type__": "cc.Vec3",
+        "x": -40,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": -10,
+        "y": 0,
+        "z": -21.5
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": -10,
+        "y": 0,
+        "z": 21.5
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": -20,
+        "y": 0,
+        "z": 0
+      }
+    ],
     "_id": ""
   },
   {
@@ -949,32 +1001,6 @@
     },
     "fileId": "c46/YsCPVOJYA4mWEpNYRx",
     "instance": null,
-    "targetOverrides": [
-      {
-        "__id__": 38
-      }
-    ]
-  },
-  {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 35
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "root"
-    ],
-    "target": {
-      "__id__": 2
-    },
-    "targetInfo": {
-      "__id__": 39
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "30/0S5WMpBf52TZtA5QymC"
-    ]
+    "targetOverrides": []
   }
 ]

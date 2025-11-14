@@ -27,6 +27,9 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     @property(MeshRenderer)
     private meshRenderer: MeshRenderer | null = null;
 
+    @property(Node)
+    public model: Node | null = null;
+
     public isCollected: boolean = false;
 
     @property(Collider)
