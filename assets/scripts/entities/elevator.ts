@@ -157,11 +157,6 @@ export class Elevator extends LifecycleComponent implements IEntities {
         }
     }
 
-    override onDisable(){
-        this.hit_collider.off('onTriggerEnter', this.onTriggerEnter, this);
-        this.hit_collider.off('onTriggerExit', this.onTriggerExit, this);
-    }
-
     private onTriggerExit() {
         this.isMoving = false;
     }

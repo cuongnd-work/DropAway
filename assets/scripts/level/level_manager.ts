@@ -1,4 +1,4 @@
-import {_decorator, JsonAsset, warn} from 'cc';
+import {_decorator, JsonAsset, warn, Node} from 'cc';
 import {LevelData} from './level_data';
 import {
     LifecycleComponent
@@ -6,8 +6,9 @@ import {
 import {LevelSpawner} from "db://assets/scripts/level/level_spawner";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {IEntities} from "db://assets/scripts/entities/base/IEntities";
-import {Hole} from "db://assets/scripts/entities/hole";
 import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
+import {game_controller} from "db://assets/scripts/game_controller";
+import {InputManager} from "db://assets/scripts/level/input_manager";
 
 const {ccclass, property} = _decorator;
 
@@ -51,6 +52,12 @@ export class LevelManager extends LifecycleComponent {
     @property({type: LevelSpawner})
     levelSpawner: LevelSpawner | null = null;
 
+    @property({type: InputManager})
+    inputManager: InputManager | null = null;
+
+    @property({type: game_controller})
+    gameController: game_controller | null = null;
+
     public entitiesMaps: Map<string, IEntities[]> = new Map();
     public floors: Floor[] = [];
     
@@ -62,12 +69,41 @@ export class LevelManager extends LifecycleComponent {
 
     private holeTotal: number = 0;
     private currentHoleComplete: number = 0;
+
+    @property([Node])
+    particles: Node[] = [];
     
     public checkLevelCompleted(){
         this.currentHoleComplete++;
-        if (this.currentHoleComplete >= this.holeTotal){
-            super_html_script.on_click_game_end();
-            super_html_script.on_click_download();
+
+        const isWin = this.currentHoleComplete >= this.holeTotal;
+
+        if (isWin){
+            this.particles[0].active = true;
+
+            setTimeout(() => {
+                this.particles[1].active = true;
+
+            },  500);
         }
+
+        setTimeout(() => {
+            if (isWin){
+                if(this.gameController){
+                    this.gameController.loadScene();
+                } else {
+                    super_html_script.on_click_game_end();
+                    super_html_script.on_click_download();
+                }
+            }
+        }, 1800);
+    }
+
+    @property({type: Node})
+    cti: Node | null = null;
+
+    public endGame(){
+        this.inputManager.isLockInput = true;
+        this.cti.active = true;
     }
 }

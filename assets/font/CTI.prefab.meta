@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "b9ec93ee-b865-4543-b3a7-78e1b4a9e657",
+  "uuid": "6efa06b1-82ad-470d-822b-0ab01da277f1",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "Obsta-003"
+    "syncNodeName": "CTI"
   }
 }

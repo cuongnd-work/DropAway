@@ -1,5 +1,9 @@
 import { _decorator, Component, Label } from 'cc';
 import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
+import {_decorator, Component, Label} from 'cc';
+import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
+import {LevelManager} from "db://assets/scripts/level/level_manager";
+
 const { ccclass, property } = _decorator;
 
 @ccclass('time_manager')
@@ -27,9 +31,11 @@ export class time_manager extends Component {
         if (this._currentTime < 0) {
             this._currentTime = 0;
             this._isRunning = false;
-            AudioService.instance.playSfx('GameFail');
 
-            console.log("⏳ Timer is over!");
+            setTimeout(() => {
+                AudioService.instance.playSfx('GameFail');
+                LevelManager.instance.endGame();
+            }, 1000);
         }
 
         this.updateLabel();

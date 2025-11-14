@@ -1,4 +1,5 @@
 import { _decorator, Component, Button, Node } from 'cc';
+import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
 const { ccclass, property } = _decorator;
 
 @ccclass('buttonci')
@@ -14,13 +15,7 @@ export class buttonci extends Component {
     }
 
     onButtonClick() {
-        console.log("✅ Button được click!");
+        super_html_script.on_click_game_end();
+        super_html_script.on_click_download();
     }
-
-    onDestroy() {
-        if (this.myButton) {
-            this.myButton.node.off('click', this.onButtonClick, this);
-        }
-    }
-
 }
