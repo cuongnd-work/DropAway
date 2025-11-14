@@ -17,6 +17,8 @@ export class InputManager extends LifecycleComponent {
     private _hitPos = new Vec3();
     private _dragTarget: Hole | null = null;
 
+    public isLockInput: boolean = false;
+
     override onInitialize() {
         input.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
         input.on(Input.EventType.TOUCH_MOVE, this._onTouchDrag, this);
@@ -30,6 +32,8 @@ export class InputManager extends LifecycleComponent {
     }
 
     private _onTouchStart(event: EventTouch) {
+        if(this.isLockInput) return;
+
         if (!this.camera) return;
         const loc = event.getLocation();
         this.camera.screenPointToRay(loc.x, loc.y, this._ray);
@@ -37,6 +41,8 @@ export class InputManager extends LifecycleComponent {
     }
 
     private _onTouchDrag(e: EventTouch) {
+        if(this.isLockInput) return;
+
         if (!this._dragTarget || !this.camera) return;
         const x = e.getLocationX();
         const y = e.getLocationY();
@@ -54,6 +60,8 @@ export class InputManager extends LifecycleComponent {
     }
 
     private _onTouchEnd() {
+        if(this.isLockInput) return;
+
         if (!this._dragTarget) return;
         this._dragTarget.endDrag();
         this._dragTarget = null;

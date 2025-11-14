@@ -1,4 +1,7 @@
-import { _decorator, Component, Label } from 'cc';
+import {_decorator, Component, Label} from 'cc';
+import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
+import {LevelManager} from "db://assets/scripts/level/level_manager";
+
 const { ccclass, property } = _decorator;
 
 @ccclass('time_manager')
@@ -27,7 +30,9 @@ export class time_manager extends Component {
             this._currentTime = 0;
             this._isRunning = false;
 
-            console.log("⏳ Timer is over!");
+            setTimeout(() => {
+                LevelManager.instance.endGame();
+            }, 1000);
         }
 
         this.updateLabel();

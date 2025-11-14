@@ -17,7 +17,7 @@ import {Hole} from "db://assets/scripts/entities/hole";
 import {Elevator} from "db://assets/scripts/entities/elevator";
 import {MaterialManager} from "db://assets/scripts/level/material_manager";
 
-const { ccclass, property } = _decorator;
+const {ccclass, property} = _decorator;
 
 @ccclass('People')
 export class People extends LifecycleComponent implements IEntities, IHasColor {
@@ -100,7 +100,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     public collect(hole: Hole): boolean {
-        if(this.tryCollect(hole)){
+        if (this.tryCollect(hole)) {
             hole.tryCompleteHole();
             return true;
         }
@@ -114,7 +114,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         }
     }
 
-    private static _getHole(node: Node) : Hole{
+    private static _getHole(node: Node): Hole {
         return node.parent.parent.getComponent(Hole);
     }
 
@@ -128,14 +128,16 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         return false;
     }
 
-    public doAnim(){
+    public doAnim() {
         const clip = this.skeletalAnim.clips[10];
         clip.wrapMode = 1;
         this.skeletalAnim.play(clip.name);
     }
 
+    private tween: Tween = null;
+
     public doCollectedAnimation(hole: Hole) {
-        if(this.elevator){
+        if (this.elevator) {
             const worldPos = this.node.worldPosition.clone();
 
             this.node.parent = hole.node.parent;
@@ -150,21 +152,30 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         const duration = 0.6;
         const startPos = this.node.worldPosition.clone();
 
-        const tween = new Tween({ t: 0 })
-            .to(duration, { t: 1 }, {
+        this.tween = new Tween({t: 0})
+            .to(duration, {t: 1}, {
                 easing: 'sineIn',
                 onUpdate: (target) => {
-                    const currentTarget = hole.getDropPoint().worldPosition.clone();
-                    const newPos = startPos.lerp(currentTarget, target.t);
-                    this.node.position = newPos;
+                    if(hole.getDropPoint()){
+                        const currentTarget = hole.getDropPoint().worldPosition.clone();
+                        const newPos = startPos.lerp(currentTarget, target.t);
+                        this.node.position = newPos;
 
-                    const scale = 0.6 + (1 - 0.6) * (1 - target.t);
-                    this.node.setScale(scale, scale, scale);
+                        const scale = 0.6 + (1 - 0.6) * (1 - target.t);
+                        this.node.setScale(scale, scale, scale);
+                    }
                 }
             })
             .call(() => {
                 this.node.active = false;
             })
             .start();
+    }
+
+    override onDestroy() {
+        if (this.tween) {
+            this.tween.stop();
+            this.tween = null;
+        }
     }
 }
