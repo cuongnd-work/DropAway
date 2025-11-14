@@ -1,19 +1,20 @@
-import { _decorator, Component, Label } from 'cc';
-import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
-import {_decorator, Component, Label} from 'cc';
+import {_decorator, Component, Label, Sprite, Color, Tween, Node} from 'cc';
 import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
+import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
 
 const { ccclass, property } = _decorator;
 
 @ccclass('time_manager')
 export class time_manager extends Component {
-
     @property
     maxTime: number = 60;
 
     @property(Label)
     timeLabel: Label = null!;
+
+    @property(Node)
+    lose: Node = null!;
 
     private _currentTime: number = 0;
     private _isRunning: boolean = false;
@@ -21,7 +22,10 @@ export class time_manager extends Component {
     start() {
         this.reset();
         this.startTimer();
+        this.originalColor = this.sprite.color.clone();
     }
+
+    private isWarning: boolean = false;
 
     update(deltaTime: number) {
         if (!this._isRunning) return;
@@ -32,12 +36,21 @@ export class time_manager extends Component {
             this._currentTime = 0;
             this._isRunning = false;
 
+            this.tween?.stop();
+
             setTimeout(() => {
                 AudioService.instance.playSfx('GameFail');
+                this.lose.active = true;
+            }, 200);
+
+            setTimeout(() => {
                 LevelManager.instance.endGame();
             }, 1000);
         }
-
+        if(this._currentTime <= 10 && !this.isWarning) {
+            this.isWarning = true;
+            this.playFadeLoop();
+        }
         this.updateLabel();
     }
 
@@ -72,5 +85,34 @@ export class time_manager extends Component {
 
     getCurrentTime() {
         return this._currentTime;
+    }
+
+
+    @property(Sprite)
+    private sprite!: Sprite;
+    private originalColor!: Color;
+
+    private tween: Tween;
+
+    playFadeLoop() {
+        const startColor = this.originalColor.clone();
+        const midColor = this.originalColor.clone();
+        const endColor = this.originalColor.clone();
+
+        // alpha 0
+        startColor.a = 0;
+        // alpha 30
+        midColor.a = 70;
+
+        // Reset sprite về alpha 0 trước khi tween
+        this.sprite.color = startColor;
+
+        // Tween lặp vô hạn
+        this.tween = new Tween(this.sprite)
+            .to(0.5, { color: midColor })  // 0 → 30 alpha
+            .to(0.5, { color: startColor }) // 30 → 0 alpha
+            .union()
+            .repeatForever()
+            .start();
     }
 }
