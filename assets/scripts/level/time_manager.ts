@@ -22,7 +22,7 @@ export class time_manager extends Component {
     start() {
         this.reset();
         this.startTimer();
-        this.originalColor = this.sprite.color.clone();
+        if(this.sprite) this.originalColor = this.sprite.color.clone();
     }
 
     private isWarning: boolean = false;
@@ -45,7 +45,7 @@ export class time_manager extends Component {
 
             setTimeout(() => {
                 LevelManager.instance.endGame();
-            }, 1000);
+            }, 2000);
         }
         if(this._currentTime <= 10 && !this.isWarning) {
             this.isWarning = true;
