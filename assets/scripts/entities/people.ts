@@ -70,7 +70,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
 
     onDisable() {
         this.hitCollider.off('onCollisionEnter', this._onHitEnter, this);
-        this.hitCollider.off('onCollisionExit', this._onHitExit, this);
+        this.hitCollider.off('onTriggerExit', this._onHitExit, this);
         this.triggerCollider.off('onTriggerEnter', this._onTriggerEnter, this);
         this.triggerCollider.off('onTriggerExit', this._onTriggerExit, this);
     }

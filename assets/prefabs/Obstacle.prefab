@@ -290,7 +290,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
+      "x": 1.1,
       "y": 1,
       "z": 1
     }
@@ -326,7 +326,7 @@
       "0"
     ],
     "value": {
-      "__uuid__": "6c90f4d2-a4a5-4b71-8ca5-cf989f8d6037",
+      "__uuid__": "00c8b5c6-7048-4929-ab6d-0aa881be3640",
       "__expectedType__": "cc.Material"
     }
   },
@@ -757,7 +757,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
+      "x": 1.1,
       "y": 1,
       "z": 1
     }
@@ -772,7 +772,7 @@
       "0"
     ],
     "value": {
-      "__uuid__": "6c90f4d2-a4a5-4b71-8ca5-cf989f8d6037",
+      "__uuid__": "00c8b5c6-7048-4929-ab6d-0aa881be3640",
       "__expectedType__": "cc.Material"
     }
   },
@@ -1145,7 +1145,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
+      "x": 1.1,
       "y": 1,
       "z": 1
     }
@@ -1181,7 +1181,7 @@
       "0"
     ],
     "value": {
-      "__uuid__": "6c90f4d2-a4a5-4b71-8ca5-cf989f8d6037",
+      "__uuid__": "00c8b5c6-7048-4929-ab6d-0aa881be3640",
       "__expectedType__": "cc.Material"
     }
   },
@@ -1551,7 +1551,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
+      "x": 1.1,
       "y": 1,
       "z": 1
     }
@@ -1572,7 +1572,7 @@
       "0"
     ],
     "value": {
-      "__uuid__": "6c90f4d2-a4a5-4b71-8ca5-cf989f8d6037",
+      "__uuid__": "00c8b5c6-7048-4929-ab6d-0aa881be3640",
       "__expectedType__": "cc.Material"
     }
   },

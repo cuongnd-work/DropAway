@@ -1,0 +1,45 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "16b6ee7f-2131-4fc3-a097-a7f052250f5b",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "16b6ee7f-2131-4fc3-a097-a7f052250f5b@6c48a",
+      "displayName": "hammer_box 1",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "16b6ee7f-2131-4fc3-a097-a7f052250f5b",
+        "visible": false
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "texture",
+    "hasAlpha": false,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "16b6ee7f-2131-4fc3-a097-a7f052250f5b@6c48a",
+    "compressSettings": {
+      "useCompressTexture": false
+    }
+  }
+}
