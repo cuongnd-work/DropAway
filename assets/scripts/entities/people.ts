@@ -128,6 +128,12 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         return false;
     }
 
+    public doAnim(){
+        const clip = this.skeletalAnim.clips[10];
+        clip.wrapMode = 1;
+        this.skeletalAnim.play(clip.name);
+    }
+
     public doCollectedAnimation(hole: Hole) {
         if(this.elevator){
             const worldPos = this.node.worldPosition.clone();

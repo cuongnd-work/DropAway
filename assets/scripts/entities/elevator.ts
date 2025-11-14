@@ -131,6 +131,8 @@ export class Elevator extends LifecycleComponent implements IEntities {
             p.node.active = true;
             if(p2) p2.node.active = true;
 
+            people.doAnim();
+
             tween(p.node)
                 .to(0.2, {position: targetPos}, {easing: 'quadOut'})
                 .start();
