@@ -722,7 +722,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 0.207
+      "z": 0.16
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -1000,7 +1000,6 @@
       "__id__": 0
     },
     "fileId": "c46/YsCPVOJYA4mWEpNYRx",
-    "instance": null,
-    "targetOverrides": []
+    "instance": null
   }
 ]
