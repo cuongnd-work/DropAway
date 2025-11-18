@@ -16,14 +16,19 @@ export class hand extends Component {
     @property
     rotateDuration: number = 0.25;
 
+    @property
+    disableInput: boolean = false;
+
     private _currentIndex: number = 0;
     private _stopLoop: boolean = false;
 
     private _currentTween: Tween<Node> | null = null;   // ⭐ Lưu tween hiện tại
 
     start() {
-        input.on(Input.EventType.TOUCH_START, this.onClick, this);
-        input.on(Input.EventType.MOUSE_DOWN, this.onClick, this);
+        if(!this.disableInput){
+            input.on(Input.EventType.TOUCH_START, this.onClick, this);
+            input.on(Input.EventType.MOUSE_DOWN, this.onClick, this);
+        }
 
         if (this.targets.length > 0) {
             this.node.active = true;
@@ -87,7 +92,9 @@ export class hand extends Component {
     }
 
     onDestroy() {
-        input.off(Input.EventType.TOUCH_START, this.onClick, this);
+        if(!this.disableInput){
+            input.off(Input.EventType.TOUCH_START, this.onClick, this);
         input.off(Input.EventType.MOUSE_DOWN, this.onClick, this);
+        }
     }
 }

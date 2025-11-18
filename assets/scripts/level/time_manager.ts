@@ -2,6 +2,7 @@ import {_decorator, Component, Label, Sprite, Color, Tween, Node} from 'cc';
 import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
 import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
+import {game_controller} from "db://assets/scripts/game_controller";
 
 const { ccclass, property } = _decorator;
 
@@ -13,8 +14,8 @@ export class time_manager extends Component {
     @property(Label)
     timeLabel: Label = null!;
 
-    @property(Node)
-    lose: Node = null!;
+    @property(game_controller)
+    game_controller: game_controller = null!;
 
     private _currentTime: number = 0;
     private _isRunning: boolean = false;
@@ -40,11 +41,10 @@ export class time_manager extends Component {
 
             setTimeout(() => {
                 AudioService.instance.playSfx('GameFail');
-                this.lose.active = true;
             }, 200);
 
             setTimeout(() => {
-                LevelManager.instance.endGame();
+                this.game_controller.loadScene();
             }, 2000);
         }
         if(this._currentTime <= 10 && !this.isWarning) {
