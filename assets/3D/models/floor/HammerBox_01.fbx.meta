@@ -23,65 +23,6 @@
       ],
       "subMetas": {}
     },
-    "48b02": {
-      "importer": "gltf-embeded-image",
-      "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@48b02",
-      "displayName": "",
-      "id": "48b02",
-      "name": "base_color_texture.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
-    "7d6ab": {
-      "importer": "texture",
-      "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@7d6ab",
-      "displayName": "",
-      "id": "7d6ab",
-      "name": "base_color_texture.texture",
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@48b02"
-      },
-      "ver": "1.0.22",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "eceb4": {
-      "importer": "gltf-material",
-      "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@eceb4",
-      "displayName": "",
-      "id": "eceb4",
-      "name": "Material.012.material",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.14",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "19d44": {
       "importer": "gltf-scene",
       "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@19d44",
@@ -100,12 +41,7 @@
     }
   },
   "userData": {
-    "imageMetas": [
-      {
-        "name": "base_color_texture",
-        "uri": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@48b02"
-      }
-    ],
+    "imageMetas": [],
     "fbx": {
       "smartMaterialEnabled": true
     },
@@ -132,12 +68,8 @@
         "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838"
       ],
       "skeletons": [],
-      "textures": [
-        "34f63a70-bd00-467d-a00a-cdca3ef6fe40@7d6ab"
-      ],
-      "materials": [
-        "34f63a70-bd00-467d-a00a-cdca3ef6fe40@eceb4"
-      ],
+      "textures": [],
+      "materials": [],
       "scenes": [
         "34f63a70-bd00-467d-a00a-cdca3ef6fe40@19d44"
       ]
