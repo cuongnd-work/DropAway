@@ -44,9 +44,9 @@
         "offsetX": 0,
         "offsetY": 0,
         "trimX": 0,
-        "trimY": 0,
+        "trimY": 34,
         "width": 512,
-        "height": 512,
+        "height": 444,
         "rawWidth": 512,
         "rawHeight": 512,
         "borderTop": 0,
@@ -61,16 +61,16 @@
         "vertices": {
           "rawPosition": [
             -256,
-            -256,
+            -222,
             0,
             256,
-            -256,
+            -222,
             0,
             -256,
-            256,
+            222,
             0,
             256,
-            256,
+            222,
             0
           ],
           "indexes": [
@@ -83,32 +83,32 @@
           ],
           "uv": [
             0,
+            478,
             512,
-            512,
-            512,
+            478,
             0,
-            0,
+            34,
             512,
-            0
+            34
           ],
           "nuv": [
             0,
-            0,
+            0.06640625,
             1,
+            0.06640625,
             0,
-            0,
+            0.93359375,
             1,
-            1,
-            1
+            0.93359375
           ],
           "minPos": [
             -256,
-            -256,
+            -222,
             0
           ],
           "maxPos": [
             256,
-            256,
+            222,
             0
           ]
         },
@@ -131,7 +131,8 @@
     "fixAlphaTransparencyArtifacts": false,
     "redirect": "0072af66-4611-4e9e-8d96-2b3d07a286cf@6c48a",
     "compressSettings": {
-      "useCompressTexture": false
+      "useCompressTexture": false,
+      "presetId": "default"
     }
   }
 }
