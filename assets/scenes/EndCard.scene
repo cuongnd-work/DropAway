@@ -2270,19 +2270,7 @@
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "6a482c4b-683d-49d4-86c9-fc39730ecb43",
-        "__expectedType__": "cc.Material"
-      },
-      {
         "__uuid__": "5a7aa79e-586a-4978-b71d-a58ea2ffc218",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "a97a4a7c-c64b-4973-87b4-cf788a33b1b2",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "2a1791cd-1a40-4e4c-84c6-35e8ddd2e7fd",
         "__expectedType__": "cc.Material"
       },
       {
@@ -2312,19 +2300,7 @@
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "5399da63-3628-4db3-aac9-f9eed473763a",
-        "__expectedType__": "cc.Material"
-      },
-      {
         "__uuid__": "153e1c22-8899-4137-ab0f-05068abe1ef4",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "545a4547-5f83-4df3-a339-aa52f42742c5",
-        "__expectedType__": "cc.Material"
-      },
-      {
-        "__uuid__": "75c8a373-7033-4c8c-a692-8eb726e79ba1",
         "__expectedType__": "cc.Material"
       },
       {
@@ -2468,8 +2444,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 432,
-      "height": 417
+      "width": 410,
+      "height": 412
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
