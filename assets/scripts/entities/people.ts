@@ -16,6 +16,7 @@ import {PersonData} from "db://assets/scripts/level/level_data";
 import {Hole} from "db://assets/scripts/entities/hole";
 import {Elevator} from "db://assets/scripts/entities/elevator";
 import {MaterialManager} from "db://assets/scripts/level/material_manager";
+import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
 
 const { ccclass, property } = _decorator;
 
@@ -146,6 +147,8 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         const clip = this.skeletalAnim.clips[6];
         clip.wrapMode = 1;
         this.skeletalAnim.play(clip.name);
+
+        if(!this.isCollected) AudioService.instance.playSfx("Char_Jump" + (Math.floor(Math.random() * 4) + 1));
 
         const duration = 0.6;
         const startPos = this.node.worldPosition.clone();

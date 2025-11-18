@@ -4,6 +4,7 @@ import {LevelManager} from "db://assets/scripts/level/level_manager";
 import {Floor} from "db://assets/scripts/entities/floor";
 import {constant} from "db://assets/configs/constant";
 import {MaterialManager} from "db://assets/scripts/level/material_manager";
+import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
 
 const {ccclass, property} = _decorator;
 
@@ -72,6 +73,7 @@ export class HoleView extends Component {
             this._currentTween = null;
         }
         this.out_line.active = true;
+        AudioService.instance.playSfx('Block_Up');
     }
 
     drag(): void {
@@ -110,6 +112,8 @@ export class HoleView extends Component {
             this._currentTween.stop();
         }
 
+        AudioService.instance.playSfx('Block_Down');
+
         this._currentTween = tween(this.node)
             .to(0.25, { worldPosition: targetPos }, { easing: 'quadOut' })
             .call(() => {
@@ -130,6 +134,8 @@ export class HoleView extends Component {
     }
 
     public OnComplete() {
+        AudioService.instance.playSfx('Hole_Close');
+
         const tweenPromises = this.doors.map(door => {
             return new Promise<void>(resolve => {
                 tween(door)

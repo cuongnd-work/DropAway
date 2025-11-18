@@ -1,4 +1,5 @@
 import { _decorator, Component, Label } from 'cc';
+import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
 const { ccclass, property } = _decorator;
 
 @ccclass('time_manager')
@@ -26,6 +27,7 @@ export class time_manager extends Component {
         if (this._currentTime < 0) {
             this._currentTime = 0;
             this._isRunning = false;
+            AudioService.instance.playSfx('GameFail');
 
             console.log("⏳ Timer is over!");
         }
