@@ -1,3 +1,27 @@
 {
-  "__version__": "1.3.9"
+  "__version__": "1.3.9",
+  "textureCompressConfig": {
+    "userPreset": {
+      "af9iQ1jZFGeL+dGToMcGys": {
+        "name": "New Compress Config",
+        "options": {
+          "web": {
+            "png": {
+              "quality": 80
+            }
+          }
+        }
+      }
+    }
+  },
+  "splash-setting": {
+    "background": {
+      "type": "default",
+      "image": "project://settings/Title Logo_512px.png"
+    },
+    "logo": {
+      "image": "project://settings/Title Logo_512px.png",
+      "type": "custom"
+    }
+  }
 }
