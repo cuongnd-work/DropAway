@@ -8,46 +8,12 @@
     "__original-animation-1.bin"
   ],
   "subMetas": {
-    "27331": {
-      "importer": "gltf-material",
-      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@27331",
-      "displayName": "",
-      "id": "27331",
-      "name": "Material.028.material",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.14",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "45f73": {
-      "importer": "gltf-mesh",
-      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@45f73",
-      "displayName": "",
-      "id": "45f73",
-      "name": "Cube.005.mesh",
-      "userData": {
-        "gltfIndex": 0,
-        "triangleCount": 3584
-      },
-      "ver": "1.1.1",
-      "imported": true,
-      "files": [
-        ".bin",
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "3c705": {
+    "94438": {
       "importer": "gltf-animation",
-      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@3c705",
+      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@94438",
       "displayName": "",
-      "id": "3c705",
-      "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01.animation",
+      "id": "94438",
+      "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01.animation",
       "userData": {
         "gltfIndex": 0,
         "wrapMode": 2,
@@ -65,12 +31,30 @@
       ],
       "subMetas": {}
     },
-    "e0957": {
-      "importer": "gltf-animation",
-      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@e0957",
+    "c6e33": {
+      "importer": "gltf-mesh",
+      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@c6e33",
       "displayName": "",
-      "id": "e0957",
-      "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle.animation",
+      "id": "c6e33",
+      "name": "Cube.002.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 3584
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4a89a": {
+      "importer": "gltf-animation",
+      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@4a89a",
+      "displayName": "",
+      "id": "4a89a",
+      "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle.animation",
       "userData": {
         "gltfIndex": 1,
         "wrapMode": 2,
@@ -105,22 +89,6 @@
       ],
       "subMetas": {}
     },
-    "20eaf": {
-      "importer": "gltf-material",
-      "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@20eaf",
-      "displayName": "",
-      "id": "20eaf",
-      "name": "Material.029.material",
-      "userData": {
-        "gltfIndex": 1
-      },
-      "ver": "1.0.14",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "ff3e1": {
       "importer": "gltf-scene",
       "uuid": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@ff3e1",
@@ -145,30 +113,30 @@
     },
     "animationImportSettings": [
       {
-        "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01",
+        "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01",
         "duration": 0.9666666388511658,
         "fps": 30,
         "splits": [
           {
-            "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01",
+            "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|fail_01",
             "from": 0,
             "to": 0.9666666388511658,
             "wrapMode": 2,
-            "previousId": "3c705"
+            "previousId": "94438"
           }
         ]
       },
       {
-        "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle",
+        "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle",
         "duration": 9.933333396911621,
         "fps": 30,
         "splits": [
           {
-            "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle",
+            "name": "Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle",
             "from": 0,
             "to": 9.933333396911621,
             "wrapMode": 2,
-            "previousId": "e0957"
+            "previousId": "4a89a"
           }
         ]
       }
@@ -193,16 +161,13 @@
     },
     "assetFinder": {
       "meshes": [
-        "aa63e26a-ba62-40de-9ef1-e6ae2244137c@45f73"
+        "aa63e26a-ba62-40de-9ef1-e6ae2244137c@c6e33"
       ],
       "skeletons": [
         "aa63e26a-ba62-40de-9ef1-e6ae2244137c@438fe"
       ],
       "textures": [],
-      "materials": [
-        "aa63e26a-ba62-40de-9ef1-e6ae2244137c@27331",
-        "aa63e26a-ba62-40de-9ef1-e6ae2244137c@20eaf"
-      ],
+      "materials": [],
       "scenes": [
         "aa63e26a-ba62-40de-9ef1-e6ae2244137c@ff3e1"
       ]
