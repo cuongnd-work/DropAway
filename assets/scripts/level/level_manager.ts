@@ -9,6 +9,7 @@ import {IEntities} from "db://assets/scripts/entities/base/IEntities";
 import super_html_script from "db://assets/plugins/playable-foundation/super-html/super_html_script";
 import {game_controller} from "db://assets/scripts/game_controller";
 import {InputManager} from "db://assets/scripts/level/input_manager";
+import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
 
 const {ccclass, property} = _decorator;
 
@@ -83,6 +84,7 @@ export class LevelManager extends LifecycleComponent {
 
             setTimeout(() => {
                 this.particles[1].active = true;
+                AudioService.instance.playSfx("Win");
 
             },  500);
         }

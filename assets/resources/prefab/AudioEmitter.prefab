@@ -94,7 +94,7 @@
     },
     "_clip": null,
     "_loop": false,
-    "_playOnAwake": true,
+    "_playOnAwake": false,
     "_volume": 1,
     "_id": ""
   },
