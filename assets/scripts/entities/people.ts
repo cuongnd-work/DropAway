@@ -130,7 +130,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     }
 
     public doAnim() {
-        const clip = this.skeletalAnim.clips[10];
+        const clip = this.skeletalAnim.clips[0];
         clip.wrapMode = 1;
         this.skeletalAnim.play(clip.name);
     }
@@ -146,7 +146,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
             this.node.setWorldPosition(worldPos);
         }
 
-        const clip = this.skeletalAnim.clips[6];
+        const clip = this.skeletalAnim.clips[0];
         clip.wrapMode = 1;
         this.skeletalAnim.play(clip.name);
 

@@ -73,6 +73,11 @@
       "scenes": [
         "3862ba99-60ea-4e73-aed4-339bff14110d@4dc71"
       ]
+    },
+    "meshCompress": {
+      "enable": true,
+      "compress": true,
+      "quantize": true
     }
   }
 }

@@ -91,6 +91,12 @@
       "scenes": [
         "811c9b8d-b143-45be-a193-da7a1065fe4b@e287a"
       ]
+    },
+    "meshCompress": {
+      "compress": true,
+      "encode": false,
+      "quantize": true,
+      "enable": true
     }
   }
 }
