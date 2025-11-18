@@ -3868,6 +3868,9 @@
     "timeLabel": {
       "__id__": 82
     },
+    "isLose": {
+      "__id__": 100
+    },
     "game_controller": {
       "__id__": 40
     },

@@ -14,6 +14,9 @@ export class time_manager extends Component {
     @property(Label)
     timeLabel: Label = null!;
 
+    @property(Node)
+    isLose: Node = null!;
+
     @property(game_controller)
     game_controller: game_controller = null!;
 
@@ -40,6 +43,7 @@ export class time_manager extends Component {
             this.tween?.stop();
 
             setTimeout(() => {
+                 if(this.isLose) this.isLose.active = true;
                 AudioService.instance.playSfx('GameFail');
             }, 200);
 
