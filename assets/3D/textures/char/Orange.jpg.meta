@@ -2,16 +2,16 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "99fb7a36-bc55-48a6-abf5-9f81bedfd861",
+  "uuid": "5628aaf3-abe3-4d7b-a577-942960aeed55",
   "files": [
-    ".json",
-    ".png"
+    ".jpg",
+    ".json"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "99fb7a36-bc55-48a6-abf5-9f81bedfd861@6c48a",
-      "displayName": "purple 1",
+      "uuid": "5628aaf3-abe3-4d7b-a577-942960aeed55@6c48a",
+      "displayName": "Orange",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "99fb7a36-bc55-48a6-abf5-9f81bedfd861",
+        "imageUuidOrDatabaseUri": "5628aaf3-abe3-4d7b-a577-942960aeed55",
         "visible": false
       },
       "ver": "1.0.22",
@@ -37,9 +37,6 @@
     "type": "texture",
     "hasAlpha": false,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "99fb7a36-bc55-48a6-abf5-9f81bedfd861@6c48a",
-    "compressSettings": {
-      "useCompressTexture": false
-    }
+    "redirect": "5628aaf3-abe3-4d7b-a577-942960aeed55@6c48a"
   }
 }

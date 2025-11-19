@@ -2,16 +2,16 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "16b6ee7f-2131-4fc3-a097-a7f052250f5b",
+  "uuid": "d998402e-505f-44ef-9d8c-b7e05fe3b683",
   "files": [
-    ".json",
-    ".png"
+    ".jpg",
+    ".json"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "16b6ee7f-2131-4fc3-a097-a7f052250f5b@6c48a",
-      "displayName": "hammer_box 1",
+      "uuid": "d998402e-505f-44ef-9d8c-b7e05fe3b683@6c48a",
+      "displayName": "purple (2)",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "16b6ee7f-2131-4fc3-a097-a7f052250f5b",
+        "imageUuidOrDatabaseUri": "d998402e-505f-44ef-9d8c-b7e05fe3b683",
         "visible": false
       },
       "ver": "1.0.22",
@@ -37,9 +37,6 @@
     "type": "texture",
     "hasAlpha": false,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "16b6ee7f-2131-4fc3-a097-a7f052250f5b@6c48a",
-    "compressSettings": {
-      "useCompressTexture": false
-    }
+    "redirect": "d998402e-505f-44ef-9d8c-b7e05fe3b683@6c48a"
   }
 }
