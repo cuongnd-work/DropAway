@@ -66,7 +66,7 @@ export class time_manager extends Component {
 
         if (this._currentTime <= 10 && !this.isWarning) {
             this.isWarning = true;
-            this.playFadeLoop();
+            if (this.sprite) this.playFadeLoop();
             this.playLabelBlink();
         }
 
