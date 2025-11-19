@@ -8,6 +8,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('time_manager')
 export class time_manager extends Component {
+
     @property
     maxTime: number = 60;
 
@@ -23,13 +24,23 @@ export class time_manager extends Component {
     private _currentTime: number = 0;
     private _isRunning: boolean = false;
 
+    private isWarning: boolean = false;
+
+    @property(Sprite)
+    private sprite!: Sprite;
+    private originalColor!: Color;
+
+    private tween: Tween;
+    private labelTween: Tween;
+
+    private lastTickTime: number = -1;     // ← Tick-Tack controller
+
     start() {
         this.reset();
         this.startTimer();
-        if(this.sprite) this.originalColor = this.sprite.color.clone();
-    }
 
-    private isWarning: boolean = false;
+        if (this.sprite) this.originalColor = this.sprite.color.clone();
+    }
 
     update(deltaTime: number) {
         if (!this._isRunning) return;
@@ -41,9 +52,10 @@ export class time_manager extends Component {
             this._isRunning = false;
 
             this.tween?.stop();
+            this.labelTween?.stop();
 
             setTimeout(() => {
-                 if(this.isLose) this.isLose.active = true;
+                if (this.isLose) this.isLose.active = true;
                 AudioService.instance.playSfx('GameFail');
             }, 200);
 
@@ -51,23 +63,31 @@ export class time_manager extends Component {
                 this.game_controller.loadScene();
             }, 2000);
         }
-        if(this._currentTime <= 10 && !this.isWarning) {
+
+        if (this._currentTime <= 10 && !this.isWarning) {
             this.isWarning = true;
             this.playFadeLoop();
+            this.playLabelBlink();
         }
+
+        if (this._currentTime <= 10) {
+            const sec = Math.ceil(this._currentTime);
+
+            if (sec !== this.lastTickTime) {
+                this.lastTickTime = sec;
+                AudioService.instance.playSfx(this.lastTickTime ? 'Tick' : 'Tak');
+            }
+        }
+
         this.updateLabel();
     }
 
-    startTimer() {
-        this._isRunning = true;
-    }
-
-    pauseTimer() {
-        this._isRunning = false;
-    }
+    startTimer() { this._isRunning = true; }
+    pauseTimer() { this._isRunning = false; }
 
     reset() {
         this._currentTime = this.maxTime;
+        this.lastTickTime = -1;
         this.updateLabel();
     }
 
@@ -87,34 +107,33 @@ export class time_manager extends Component {
         this.timeLabel.string = text;
     }
 
-    getCurrentTime() {
-        return this._currentTime;
-    }
-
-
-    @property(Sprite)
-    private sprite!: Sprite;
-    private originalColor!: Color;
-
-    private tween: Tween;
+    getCurrentTime() { return this._currentTime; }
 
     playFadeLoop() {
         const startColor = this.originalColor.clone();
         const midColor = this.originalColor.clone();
-        const endColor = this.originalColor.clone();
 
-        // alpha 0
         startColor.a = 0;
-        // alpha 30
         midColor.a = 150;
 
-        // Reset sprite về alpha 0 trước khi tween
         this.sprite.color = startColor;
 
-        // Tween lặp vô hạn
         this.tween = new Tween(this.sprite)
-            .to(0.5, { color: midColor })  // 0 → 30 alpha
-            .to(0.5, { color: startColor }) // 30 → 0 alpha
+            .to(0.5, { color: midColor })
+            .to(0.5, { color: startColor })
+            .union()
+            .repeatForever()
+            .start();
+    }
+
+    // Text đỏ ↔ trắng
+    playLabelBlink() {
+        const white = new Color(255, 255, 255, 255);
+        const red = new Color(255, 0, 0, 255);
+
+        this.labelTween = new Tween(this.timeLabel)
+            .to(0.3, { color: red })
+            .to(0.3, { color: white })
             .union()
             .repeatForever()
             .start();

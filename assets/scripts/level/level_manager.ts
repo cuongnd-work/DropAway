@@ -73,7 +73,10 @@ export class LevelManager extends LifecycleComponent {
 
     @property([Node])
     particles: Node[] = [];
-    
+
+    @property(Node)
+    tus: Node;
+
     public checkLevelCompleted(){
         this.currentHoleComplete++;
 
@@ -81,10 +84,12 @@ export class LevelManager extends LifecycleComponent {
 
         if (isWin){
             this.particles[0].active = true;
+            if(this.tus) this.tus.active = false;
 
             setTimeout(() => {
                 this.particles[1].active = true;
                 AudioService.instance.playSfx("Win");
+                AudioService.instance.playSfx("Clap");
 
             },  500);
         }
@@ -92,8 +97,11 @@ export class LevelManager extends LifecycleComponent {
         setTimeout(() => {
             if (isWin){
                 if(this.gameController){
+                    super_html_script.on_click_game_end();
+                    super_html_script.on_click_download();
                     this.gameController.loadScene();
                 } else {
+                    this.endGame();
                     super_html_script.on_click_game_end();
                     super_html_script.on_click_download();
                 }
