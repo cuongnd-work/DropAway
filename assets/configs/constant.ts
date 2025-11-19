@@ -20,7 +20,7 @@
     }
     
     static GAME_PLAY = {
-        HOLE_OFFSET: 0.1,
+        HOLE_OFFSET: 0.05,
         DEFAULT: ''
     }
 }

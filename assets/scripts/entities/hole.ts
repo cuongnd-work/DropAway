@@ -51,6 +51,10 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
         setTimeout(() => {
             this.holeView.OnComplete();
+            this._rb.sleep();
+            this._rb.setLinearVelocity(Vec3.ZERO);
+            this._rb.sleep();
+            this._rb.linearFactor = new Vec3(0, 0, 0);
         }, 500);
     }
 
@@ -82,6 +86,7 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
 
     override onTick(dt: number) {
         if (!this._dragging || !this._rb) return;
+        if(this.isComplete) return;
 
         const current = this.holeView.node.worldPosition;
         const next = new Vec3();
