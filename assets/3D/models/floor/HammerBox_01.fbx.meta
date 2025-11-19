@@ -5,15 +5,15 @@
   "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40",
   "files": [],
   "subMetas": {
-    "8d838": {
+    "40b15": {
       "importer": "gltf-mesh",
-      "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838",
+      "uuid": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15",
       "displayName": "",
-      "id": "8d838",
-      "name": "Scene.010.mesh",
+      "id": "40b15",
+      "name": "Scene.001.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 240
+        "triangleCount": 120
       },
       "ver": "1.1.1",
       "imported": true,
@@ -65,7 +65,7 @@
     },
     "assetFinder": {
       "meshes": [
-        "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838"
+        "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15"
       ],
       "skeletons": [],
       "textures": [],

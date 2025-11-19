@@ -5,15 +5,15 @@
   "uuid": "3862ba99-60ea-4e73-aed4-339bff14110d",
   "files": [],
   "subMetas": {
-    "fd4a2": {
+    "41ac8": {
       "importer": "gltf-mesh",
-      "uuid": "3862ba99-60ea-4e73-aed4-339bff14110d@fd4a2",
+      "uuid": "3862ba99-60ea-4e73-aed4-339bff14110d@41ac8",
       "displayName": "",
-      "id": "fd4a2",
-      "name": "Cube.004.mesh",
+      "id": "41ac8",
+      "name": "Cube.001.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 316
+        "triangleCount": 158
       },
       "ver": "1.1.1",
       "imported": true,
@@ -65,7 +65,7 @@
     },
     "assetFinder": {
       "meshes": [
-        "3862ba99-60ea-4e73-aed4-339bff14110d@fd4a2"
+        "3862ba99-60ea-4e73-aed4-339bff14110d@41ac8"
       ],
       "skeletons": [],
       "textures": [],

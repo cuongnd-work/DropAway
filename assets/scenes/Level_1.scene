@@ -838,7 +838,7 @@
       "__id__": 20
     },
     "_mesh": {
-      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838",
+      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1028,7 +1028,7 @@
       "__id__": 25
     },
     "_mesh": {
-      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838",
+      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1218,7 +1218,7 @@
       "__id__": 30
     },
     "_mesh": {
-      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838",
+      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1408,7 +1408,7 @@
       "__id__": 35
     },
     "_mesh": {
-      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@8d838",
+      "__uuid__": "34f63a70-bd00-467d-a00a-cdca3ef6fe40@40b15",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -2368,7 +2368,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 105.69957885742187,
+      "width": 111.88318786621093,
       "height": 54
     },
     "_anchorPoint": {
@@ -2503,7 +2503,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 149.3276794433594,
+      "width": 152.96934204101564,
       "height": 57.199999999999996
     },
     "_anchorPoint": {
@@ -3526,7 +3526,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 522.3821533203125,
+      "width": 600.17744140625,
       "height": 102.30799999999999
     },
     "_anchorPoint": {
@@ -3793,7 +3793,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75.60089111328125,
+      "width": 90.32815551757812,
       "height": 54.4
     },
     "_anchorPoint": {

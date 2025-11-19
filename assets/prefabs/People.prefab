@@ -344,7 +344,7 @@
       "_defaultClip"
     ],
     "value": {
-      "__uuid__": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@4a89a",
+      "__uuid__": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@addcc",
       "__expectedType__": "cc.AnimationClip"
     }
   },
@@ -1154,7 +1154,7 @@
       "__id__": 95
     },
     "_mesh": {
-      "__uuid__": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@c6e33",
+      "__uuid__": "aa63e26a-ba62-40de-9ef1-e6ae2244137c@41ac8",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1196,8 +1196,8 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -1.773239688418471e-8,
-      "y": -6.8545671361164295e-9,
-      "z": -0.481070339679718
+      "y": -6.854580014703515e-9,
+      "z": -0.48107022047042847
     },
     "_lrot": {
       "__type__": "cc.Quat",

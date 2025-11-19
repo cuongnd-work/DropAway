@@ -207,7 +207,7 @@
       "__id__": 6
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@80c75",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@ff8ed",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -494,7 +494,7 @@
       "__id__": 17
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@b7142",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@c2762",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -615,7 +615,7 @@
       "__id__": 22
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@b05e6",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@0c841",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -736,7 +736,7 @@
       "__id__": 27
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@b46eb",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@6da96",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -857,7 +857,7 @@
       "__id__": 32
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@44b97",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@1d18e",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -978,7 +978,7 @@
       "__id__": 37
     },
     "_mesh": {
-      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@4a3b5",
+      "__uuid__": "190c1dc4-0022-4ef9-92f6-3b0e39481dd9@1d18e",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1025,8 +1025,6 @@
       "__id__": 0
     },
     "fileId": "d9VLXFjSBKjpQSEiIITfB2",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {

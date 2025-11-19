@@ -213,7 +213,7 @@
       "__id__": 6
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@de0f1",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@44b97",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -500,7 +500,7 @@
       "__id__": 17
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@63080",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@6da96",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -621,7 +621,7 @@
       "__id__": 22
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@5536d",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@80c75",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -742,7 +742,7 @@
       "__id__": 27
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@9bcb3",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@b7142",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -863,7 +863,7 @@
       "__id__": 32
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@7fe80",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@b05e6",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -984,7 +984,7 @@
       "__id__": 37
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@97143",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@b46eb",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1105,7 +1105,7 @@
       "__id__": 42
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@8825f",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@0c841",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -1226,7 +1226,7 @@
       "__id__": 47
     },
     "_mesh": {
-      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@8825f",
+      "__uuid__": "63d71f3f-1689-4684-babf-8dde7268f6fc@0c841",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
