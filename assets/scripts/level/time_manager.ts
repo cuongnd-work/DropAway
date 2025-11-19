@@ -106,7 +106,7 @@ export class time_manager extends Component {
         // alpha 0
         startColor.a = 0;
         // alpha 30
-        midColor.a = 70;
+        midColor.a = 150;
 
         // Reset sprite về alpha 0 trước khi tween
         this.sprite.color = startColor;
