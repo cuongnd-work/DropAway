@@ -114,6 +114,10 @@ export class Elevator extends LifecycleComponent implements IEntities {
         this.hit_collider.on('onTriggerExit', this.onTriggerExit, this);
 
         this.text.string = datas.people.length.toString();
+        const currentEuler = this.text.node.eulerAngles;
+
+        this.text.node.eulerAngles = new Vec3(currentEuler.x, (currentEuler.y >= 0 && currentEuler.x >=0 ? 1 : -1) * angleY + currentEuler.y, currentEuler.z);
+
     }
 
     triggerPeopleComplete(people: People) {
