@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "Hole",
+    "_name": "Hole-001",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Hole",
+    "_name": "Hole-001",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -154,7 +154,7 @@
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "ba4d76c8-233c-4998-a6df-eb80ae8b264e",
+        "__uuid__": "6dfd122c-a781-4c40-beb3-28c9722557ba",
         "__expectedType__": "cc.Prefab"
       },
       {
