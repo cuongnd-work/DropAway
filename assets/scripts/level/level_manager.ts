@@ -1,4 +1,4 @@
-import {_decorator, JsonAsset, warn, Node} from 'cc';
+import {_decorator, JsonAsset, warn, Node, Label} from 'cc';
 import {LevelData} from './level_data';
 import {
     LifecycleComponent
@@ -115,5 +115,15 @@ export class LevelManager extends LifecycleComponent {
     public endGame(){
         this.inputManager.isLockInput = true;
         this.cti.active = true;
+    }
+
+    @property(Label)
+    public text: Label = null;
+
+    private currentIQ: number = 50;
+
+    public SetIQ(){
+        this.currentIQ += 25;
+        this.text.string = "IQ = " + this.currentIQ.toString();
     }
 }

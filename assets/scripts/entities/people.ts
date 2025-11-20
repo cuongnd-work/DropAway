@@ -17,6 +17,7 @@ import {Hole} from "db://assets/scripts/entities/hole";
 import {Elevator} from "db://assets/scripts/entities/elevator";
 import {MaterialManager} from "db://assets/scripts/level/material_manager";
 import {AudioService} from "db://assets/plugins/playable-foundation/game-foundation/audio_manager/AudioService";
+import {LevelManager} from "db://assets/scripts/level/level_manager";
 
 const {ccclass, property} = _decorator;
 
@@ -123,6 +124,7 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         if (!this.isCollected && hole.color == this.color) {
             this.doCollectedAnimation(hole);
             this.isCollected = true;
+            LevelManager.instance.SetIQ();
             if (this.elevator) this.elevator.triggerPeopleComplete(this);
             return true;
         }
