@@ -6,9 +6,13 @@ export class disable_onclick extends Component {
 
     private _timer: number | null = null;
 
+    @property(Boolean)
+    public isStartDisable : boolean = false;
+
     start() {
         input.on(Input.EventType.TOUCH_START, this.onClick, this);
         input.on(Input.EventType.MOUSE_DOWN, this.onClick, this);
+        this.node.active = !this.isStartDisable;
     }
 
     onClick() {
@@ -20,7 +24,7 @@ export class disable_onclick extends Component {
 
         this._timer = setTimeout(() => {
             this.node.active = true;
-        }, 3000);
+        }, 5000);
     }
 
     onDestroy() {
