@@ -2517,7 +2517,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "maxTime": 50,
+    "maxTime": 100,
     "timeLabel": {
       "__id__": 61
     },
