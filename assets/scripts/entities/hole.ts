@@ -84,9 +84,25 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
         this.holeView.endDrag();
     }
 
+    private check: boolean = false;
+
     override onTick(dt: number) {
         if (!this._dragging || !this._rb) return;
-        if(this.isComplete) return;
+
+        if(this.check) return;
+        if(this.isComplete) {
+            this.check = true;
+
+            this._dragging = false;
+
+            if (this._rb) {
+                this._rb.setLinearVelocity(Vec3.ZERO);
+                this._rb.linearFactor = new Vec3(0, 0, 0);
+                this._rb.angularFactor = new Vec3(0, 0, 0);
+            }
+
+            return;
+        }
 
         const current = this.holeView.node.worldPosition;
         const next = new Vec3();
