@@ -1719,7 +1719,7 @@
     "propertyPath": [
       "_string"
     ],
-    "value": "YOU LOSE!"
+    "value": "YOU WiN!"
   },
   {
     "__type__": "cc.TargetInfo",
@@ -1737,7 +1737,7 @@
     ],
     "value": {
       "__type__": "cc.Size",
-      "width": 680.212451171875,
+      "width": 594.5324584960938,
       "height": 156.35999999999999
     }
   },
