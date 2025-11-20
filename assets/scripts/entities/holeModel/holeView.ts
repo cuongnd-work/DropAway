@@ -42,6 +42,11 @@ export class HoleView extends Component {
         this.hole = data;
         const current = this.node.eulerAngles;
         this.node.setRotationFromEuler(0, current.y + this.hole.holeData.rotation * 90, 0);
+
+        const currentEuler = this.text.node.eulerAngles;
+
+        this.text.node.eulerAngles = new Vec3(currentEuler.x, (currentEuler.y >= 0 ? -1 : 1) * this.hole.holeData.rotation * 90 - currentEuler.y, currentEuler.z);
+
         this.out_line.active = false;
 
         if (!this.meshRenderers || this.meshRenderers.length === 0) {
@@ -83,7 +88,6 @@ export class HoleView extends Component {
     }
 
     endDrag(): void {
-        if(this.hole.isComplete) return;
         this.out_line.active = false;
 
         if (!LevelManager.instance.floors || LevelManager.instance.floors.length === 0) return;
