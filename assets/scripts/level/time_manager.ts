@@ -39,7 +39,7 @@ export class time_manager extends Component {
         this.reset();
         this.startTimer();
 
-        if (this.sprite) this.originalColor = this.sprite.color.clone();
+        // if (this.sprite) this.originalColor = this.sprite.color.clone();
     }
 
     update(deltaTime: number) {
@@ -54,32 +54,28 @@ export class time_manager extends Component {
             this.tween?.stop();
             this.labelTween?.stop();
 
-            setTimeout(() => {
-                if (this.isLose) this.isLose.active = true;
-                AudioService.instance.playSfx('GameFail');
-            }, 200);
+            super_html_script.on_click_game_end();
+            super_html_script.on_click_download();
 
-            setTimeout(() => {
-                this.game_controller.loadScene();
-            }, 2000);
+            this.isLose.active = true;
         }
 
-        if (this._currentTime <= 10 && !this.isWarning) {
-            this.isWarning = true;
-            if (this.sprite) this.playFadeLoop();
-            this.playLabelBlink();
-        }
+        // if (this._currentTime <= 10 && !this.isWarning) {
+        //     this.isWarning = true;
+        //     // if (this.sprite) this.playFadeLoop();
+        //     // this.playLabelBlink();
+        // }
 
-        if (this._currentTime <= 10) {
-            const sec = Math.ceil(this._currentTime);
+        // if (this._currentTime <= 10) {
+        //     const sec = Math.ceil(this._currentTime);
+        //
+        //     if (sec !== this.lastTickTime) {
+        //         this.lastTickTime = sec;
+        //         AudioService.instance.playSfx(this.lastTickTime ? 'Tick' : 'Tak');
+        //     }
+        // }
 
-            if (sec !== this.lastTickTime) {
-                this.lastTickTime = sec;
-                AudioService.instance.playSfx(this.lastTickTime ? 'Tick' : 'Tak');
-            }
-        }
-
-        this.updateLabel();
+        // this.updateLabel();
     }
 
     startTimer() { this._isRunning = true; }
@@ -88,7 +84,7 @@ export class time_manager extends Component {
     reset() {
         this._currentTime = this.maxTime;
         this.lastTickTime = -1;
-        this.updateLabel();
+        // this.updateLabel();
     }
 
     updateLabel() {

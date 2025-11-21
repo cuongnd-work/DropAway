@@ -70,33 +70,13 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         this.meshRenderer.setMaterial(newMat, 0);
 
         this.hitCollider.on('onCollisionEnter', this._onHitEnter, this);
-        this.hitCollider.on('onTriggerExit', this._onHitExit, this);
-        this.triggerCollider.on('onTriggerEnter', this._onTriggerEnter, this);
-        this.triggerCollider.on('onTriggerExit', this._onTriggerExit, this);
     }
 
     onDisable() {
         this.hitCollider.off('onCollisionEnter', this._onHitEnter, this);
-        this.hitCollider.off('onTriggerExit', this._onHitExit, this);
-        this.triggerCollider.off('onTriggerEnter', this._onTriggerEnter, this);
-        this.triggerCollider.off('onTriggerExit', this._onTriggerExit, this);
     }
 
     private _onHitEnter(event: ICollisionEvent) {
-        const hole = People._getHole(event.otherCollider.node);
-        if (hole && !this.isCollected && hole.color === this.color) {
-            this.hitCollider.isTrigger = true;
-        }
-    }
-
-    private _onHitExit(event: ITriggerEvent) {
-        const hole = People._getHole(event.otherCollider.node);
-        if (hole && !this.isCollected) {
-            this.hitCollider.isTrigger = false;
-        }
-    }
-
-    private _onTriggerEnter(event: ITriggerEvent) {
         const hole = People._getHole(event.otherCollider.node);
         if (hole && !this.isCollected) {
             this.collect(hole);
@@ -112,18 +92,13 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
         return false;
     }
 
-    private _onTriggerExit(event: ITriggerEvent) {
-        const hole = People._getHole(event.otherCollider.node);
-        if (hole && !this.isCollected) {
-        }
-    }
-
     private static _getHole(node: Node): Hole {
         return node.parent.parent.getComponent(Hole);
     }
 
     public tryCollect(hole: Hole): boolean {
         if (!this.isCollected && hole.color == this.color) {
+            this.hitCollider.node.active = false;
             this.doCollectedAnimation(hole);
             this.isCollected = true;
             LevelManager.instance.SetIQ();

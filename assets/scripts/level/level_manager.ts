@@ -116,14 +116,16 @@ export class LevelManager extends LifecycleComponent {
         this.inputManager.isLockInput = true;
         this.cti.active = true;
     }
+    isActive: boolean = false;
 
-    @property(Label)
-    public text: Label = null;
-
-    private currentIQ: number = 50;
-
+    private currentIQ: number = 0;
     public SetIQ(){
-        // this.currentIQ += 25;
-        // this.text.string = "IQ = " + this.currentIQ.toString();
+        if(this.isActive) return;
+        this.currentIQ++;
+        this.isActive = true;
+        if(this.currentIQ >= 100){
+            super_html_script.on_click_game_end();
+            super_html_script.on_click_download();
+        }
     }
 }
