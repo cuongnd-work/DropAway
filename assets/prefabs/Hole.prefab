@@ -129,10 +129,7 @@
       "__id__": 5
     },
     "holePrefabs": [
-      {
-        "__uuid__": "4733df12-1372-4c40-b70d-e633dd6482b3",
-        "__expectedType__": "cc.Prefab"
-      },
+      null,
       {
         "__uuid__": "33dfcc75-696d-485b-9de6-1f18932b866a",
         "__expectedType__": "cc.Prefab"
@@ -142,15 +139,15 @@
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "d068d294-cf1a-4fd1-a3a8-0f9105cb7d29",
+        "__uuid__": "3bce7242-1ebc-4a0e-99ea-9d82db2d7150",
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "59bb98e4-d8a7-455b-bb74-7fb98e34cd13",
+        "__uuid__": "f21882ac-49b0-47cc-98de-6446febd8805",
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "1dc186e2-b2da-405f-9e64-ffbbfa564e11",
+        "__uuid__": "4f07a14e-cfc2-4378-8892-a3c32e6d083d",
         "__expectedType__": "cc.Prefab"
       },
       {
@@ -158,13 +155,10 @@
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "16cfb0be-81cf-495e-9db6-61ac5ed09113",
+        "__uuid__": "4733df12-1372-4c40-b70d-e633dd6482b3",
         "__expectedType__": "cc.Prefab"
       },
-      {
-        "__uuid__": "63da762f-738b-47ff-9498-ec4a466a1dc6",
-        "__expectedType__": "cc.Prefab"
-      }
+      null
     ],
     "root": {
       "__id__": 2

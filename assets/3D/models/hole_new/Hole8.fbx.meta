@@ -2,12 +2,12 @@
   "ver": "2.3.14",
   "importer": "fbx",
   "imported": true,
-  "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b",
+  "uuid": "caef5563-5975-47a8-b94c-093026b96204",
   "files": [],
   "subMetas": {
     "80c75": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@80c75",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@80c75",
       "displayName": "",
       "id": "80c75",
       "name": "Mesh.001.mesh",
@@ -25,7 +25,7 @@
     },
     "b7142": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@b7142",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@b7142",
       "displayName": "",
       "id": "b7142",
       "name": "Mesh.002.mesh",
@@ -43,7 +43,7 @@
     },
     "b05e6": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@b05e6",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@b05e6",
       "displayName": "",
       "id": "b05e6",
       "name": "Mesh.003.mesh",
@@ -61,7 +61,7 @@
     },
     "b46eb": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@b46eb",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@b46eb",
       "displayName": "",
       "id": "b46eb",
       "name": "Mesh.004.mesh",
@@ -79,7 +79,7 @@
     },
     "44b97": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@44b97",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@44b97",
       "displayName": "",
       "id": "44b97",
       "name": "Mesh.005.mesh",
@@ -97,7 +97,7 @@
     },
     "0c841": {
       "importer": "gltf-mesh",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@0c841",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@0c841",
       "displayName": "",
       "id": "0c841",
       "name": "Mesh.006.mesh",
@@ -113,11 +113,11 @@
       ],
       "subMetas": {}
     },
-    "347cb": {
+    "3a193": {
       "importer": "gltf-scene",
-      "uuid": "1ebdabac-b15f-4992-bab3-07c82891326b@347cb",
+      "uuid": "caef5563-5975-47a8-b94c-093026b96204@3a193",
       "displayName": "",
-      "id": "347cb",
+      "id": "3a193",
       "name": "Hole8.prefab",
       "userData": {
         "gltfIndex": 0
@@ -155,18 +155,18 @@
     },
     "assetFinder": {
       "meshes": [
-        "1ebdabac-b15f-4992-bab3-07c82891326b@80c75",
-        "1ebdabac-b15f-4992-bab3-07c82891326b@b7142",
-        "1ebdabac-b15f-4992-bab3-07c82891326b@b05e6",
-        "1ebdabac-b15f-4992-bab3-07c82891326b@b46eb",
-        "1ebdabac-b15f-4992-bab3-07c82891326b@44b97",
-        "1ebdabac-b15f-4992-bab3-07c82891326b@0c841"
+        "caef5563-5975-47a8-b94c-093026b96204@80c75",
+        "caef5563-5975-47a8-b94c-093026b96204@b7142",
+        "caef5563-5975-47a8-b94c-093026b96204@b05e6",
+        "caef5563-5975-47a8-b94c-093026b96204@b46eb",
+        "caef5563-5975-47a8-b94c-093026b96204@44b97",
+        "caef5563-5975-47a8-b94c-093026b96204@0c841"
       ],
       "skeletons": [],
       "textures": [],
       "materials": [],
       "scenes": [
-        "1ebdabac-b15f-4992-bab3-07c82891326b@347cb"
+        "caef5563-5975-47a8-b94c-093026b96204@3a193"
       ]
     }
   }

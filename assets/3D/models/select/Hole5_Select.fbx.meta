@@ -2,15 +2,15 @@
   "ver": "2.3.14",
   "importer": "fbx",
   "imported": true,
-  "uuid": "9e219e5c-7a52-41fc-ae60-a3c2de8641bc",
+  "uuid": "399e9fca-09d7-42dd-be15-c041e9f62724",
   "files": [],
   "subMetas": {
-    "48a2f": {
+    "825e6": {
       "importer": "gltf-mesh",
-      "uuid": "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@48a2f",
+      "uuid": "399e9fca-09d7-42dd-be15-c041e9f62724@825e6",
       "displayName": "",
-      "id": "48a2f",
-      "name": "Hole8_Select.mesh",
+      "id": "825e6",
+      "name": "Hole5_Select.mesh",
       "userData": {
         "gltfIndex": 0,
         "triangleCount": 116
@@ -25,7 +25,7 @@
     },
     "55b43": {
       "importer": "gltf-material",
-      "uuid": "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@55b43",
+      "uuid": "399e9fca-09d7-42dd-be15-c041e9f62724@55b43",
       "displayName": "",
       "id": "55b43",
       "name": "lambert3.material",
@@ -39,12 +39,12 @@
       ],
       "subMetas": {}
     },
-    "d08e5": {
+    "e4f46": {
       "importer": "gltf-scene",
-      "uuid": "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@d08e5",
+      "uuid": "399e9fca-09d7-42dd-be15-c041e9f62724@e4f46",
       "displayName": "",
-      "id": "d08e5",
-      "name": "Hole8_Select.prefab",
+      "id": "e4f46",
+      "name": "Hole5_Select.prefab",
       "userData": {
         "gltfIndex": 0
       },
@@ -81,15 +81,15 @@
     },
     "assetFinder": {
       "meshes": [
-        "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@48a2f"
+        "399e9fca-09d7-42dd-be15-c041e9f62724@825e6"
       ],
       "skeletons": [],
       "textures": [],
       "materials": [
-        "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@55b43"
+        "399e9fca-09d7-42dd-be15-c041e9f62724@55b43"
       ],
       "scenes": [
-        "9e219e5c-7a52-41fc-ae60-a3c2de8641bc@d08e5"
+        "399e9fca-09d7-42dd-be15-c041e9f62724@e4f46"
       ]
     }
   }
