@@ -859,9 +859,9 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -0.026,
       "y": 0,
-      "z": 0
+      "z": 0.05
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -906,11 +906,11 @@
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 1,
+      "y": 0.6,
       "z": 0
     },
-    "_radius": 0.399,
-    "_cylinderHeight": 1.077,
+    "_radius": 0.228,
+    "_cylinderHeight": 1.556,
     "_direction": 1,
     "_id": ""
   },
@@ -1038,11 +1038,11 @@
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 1.1,
+      "y": 0.7,
       "z": 0
     },
-    "_radius": 0.029,
-    "_cylinderHeight": 1.567,
+    "_radius": 0.022,
+    "_cylinderHeight": 1.908,
     "_direction": 1,
     "_id": ""
   },

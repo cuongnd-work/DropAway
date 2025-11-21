@@ -119,15 +119,21 @@ export class LevelSpawner extends LifecycleComponent {
                     const peopleData = levelData.peopleData.find(h => h.position.x === x && h.position.y === y);
 
                     if (peopleData) {
-                        const people = spawnEntity<People>(this.peoplePrefab, worldPos, gridPos, parentNode);
-                        if (people) {
+                        const points = this.getSquarePoints(worldPos);
+                        let x: People[] = [];
+                        for (const wp of points) {
+                            const people = spawnEntity<People>(this.peoplePrefab, wp, gridPos, parentNode);
+                            x.push(people);
                             people.bindData(peopleData, null);
+                        }
 
+                        if (x) {
                             if (!entitiesMaps.has(key)) {
                                 entitiesMaps.set(key, []);
                             }
-                            entitiesMaps.get(key)!.push(people);
+                            entitiesMaps.get(key)!.push(x[0]);
                         }
+
                     }
                 }
 
@@ -211,5 +217,14 @@ export class LevelSpawner extends LifecycleComponent {
             }
         }
         return entitiesMaps;
+    }
+    getSquarePoints(center: Vec3): Vec3[] {
+        const r = 0.25;
+        return [
+            new Vec3(center.x - r, center.y, center.z - r),
+            new Vec3(center.x - r, center.y, center.z + r),
+            new Vec3(center.x + r, center.y, center.z - r),
+            new Vec3(center.x + r, center.y, center.z + r),
+        ];
     }
 }

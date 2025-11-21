@@ -123,7 +123,7 @@ export class LevelManager extends LifecycleComponent {
     private currentIQ: number = 50;
 
     public SetIQ(){
-        this.currentIQ += 25;
-        this.text.string = "IQ = " + this.currentIQ.toString();
+        // this.currentIQ += 25;
+        // this.text.string = "IQ = " + this.currentIQ.toString();
     }
 }

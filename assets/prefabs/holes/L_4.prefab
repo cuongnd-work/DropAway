@@ -1404,9 +1404,9 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -0.036,
       "y": 0,
-      "z": 0
+      "z": -0.243
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -1741,7 +1741,7 @@
         "__id__": 39
       }
     ],
-    "maxPeopleInHole": 3,
+    "maxPeopleInHole": 52,
     "_id": ""
   },
   {

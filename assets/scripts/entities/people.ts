@@ -47,6 +47,8 @@ export class People extends LifecycleComponent implements IEntities, IHasColor {
     private _holeInTrigger: Hole | null = null;
 
     bindData(data: PersonData, elevator?: Elevator): void {
+        this.node.setScale(0.7, 0.7, 0.7);
+
         this.elevator = elevator;
         if (!elevator) {
             this.position = data.position;
