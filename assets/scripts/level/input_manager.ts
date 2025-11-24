@@ -77,6 +77,8 @@ export class InputManager extends LifecycleComponent {
         const results = PhysicsSystem.instance.raycastResults;
         if (!results || results.length === 0) return;
 
+        let hit = results[0];
+
         let targetNode: Node | null = null;
         for (const r of results) {
             if (!r.collider) continue;
@@ -90,7 +92,7 @@ export class InputManager extends LifecycleComponent {
 
         if (!targetNode) return;
 
-        this._hitPos.set(targetNode.worldPosition);
+        this._hitPos.set(hit.hitPoint);
 
         let cur: Node | null = targetNode;
         let hole: Hole | null = null;
@@ -102,7 +104,7 @@ export class InputManager extends LifecycleComponent {
 
         if (!hole) return;
 
-        hole.beginDrag();
+        hole.beginDrag(hit.hitPoint);
         this._dragTarget = hole;
     }
 }
