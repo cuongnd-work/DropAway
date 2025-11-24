@@ -57,20 +57,30 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
             this._rb.linearFactor = new Vec3(0, 0, 0);
         }, 500);
     }
+    private _dragOffset = new Vec3();
 
-    beginDrag(): void {
-        if (this.isComplete) return;
+    beginDrag(hitPos: Vec3) {
         this._dragging = true;
-        this._targetPos.set(this.holeView.node.worldPosition);
+
+        Vec3.subtract(
+            this._dragOffset,
+            this.holeView.node.worldPosition,
+            hitPos
+        );
+
         this._rb.wakeUp();
         this._rb.linearFactor = new Vec3(1, 0, 1);
-        this.holeView.beginDrag();
     }
 
-    drag(worldPos: Vec3): void {
-        if (this.isComplete) return;
-        if (!this._dragging) return;
-        this._targetPos.set(worldPos.x, this.holeView.node.worldPosition.y, worldPos.z);
+    drag(worldPos: Vec3) {
+        if (!this._dragging || this.isComplete) return;
+
+        this._targetPos.set(
+            worldPos.x + this._dragOffset.x,
+            this.holeView.node.worldPosition.y,
+            worldPos.z + this._dragOffset.z
+        );
+
         this.holeView.drag();
     }
 
@@ -104,13 +114,9 @@ export class Hole extends LifecycleComponent implements IEntities, IHasColor, ID
             return;
         }
 
-        const current = this.holeView.node.worldPosition;
-        const next = new Vec3();
-        Vec3.lerp(next, current, this._targetPos, dt * this.speed);
-
         const vel = new Vec3();
-        Vec3.subtract(vel, next, current);
-        vel.multiplyScalar(1 / dt);
+        Vec3.subtract(vel, this._targetPos, this.holeView.node.worldPosition);
+        vel.multiplyScalar(this.speed);
 
         const maxSpeed = 20;
         if (vel.length() > maxSpeed) {
