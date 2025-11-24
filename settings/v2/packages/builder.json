@@ -22,6 +22,7 @@
     "logo": {
       "image": "project://settings/Title Logo_512px.png",
       "type": "custom"
-    }
+    },
+    "totalTime": 500
   }
 }
